@@ -4,6 +4,7 @@ import session from 'express-session';
 import passport from 'passport';
 import initPassport from './config/passport.js';
 import authRoutes from './routes/authRoutes.js';
+import mapCreateRoutes from './routes/mapCreate.routes.js'
 
 import { configDotenv } from 'dotenv';
 
@@ -18,6 +19,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/auth', authRoutes);
+app.use('/map', mapCreateRoutes);
+
 
 
 export default app;
