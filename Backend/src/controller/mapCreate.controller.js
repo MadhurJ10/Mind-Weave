@@ -125,8 +125,8 @@ Ensure the final output is a valid JSON array containing all 22 nodes (1 + 3 + 6
         // Each of those 6 child nodes (sub_a_1, sub_a_2, sub_b_1, etc.) should be depth: 2, have no children, and have color 'color-green'.
 
         // The JSON must follow this exact structure and use these specific IDs and depth values.`
-        console.log(promptt[3])
-        const result = await model.generateContent(promptt[3]);
+        console.log(promptt[ 3 ])
+        const result = await model.generateContent(promptt[ 3 ]);
         const response = result.response
         // console.log(response)
         return res.json({

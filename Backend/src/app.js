@@ -5,6 +5,7 @@ import passport from 'passport';
 import initPassport from './config/passport.js';
 import authRoutes from './routes/authRoutes.js';
 import mapCreateRoutes from './routes/mapCreate.routes.js'
+import askAiRoute from './routes/askAi.route.js'
 
 import { configDotenv } from 'dotenv';
 
@@ -20,6 +21,7 @@ app.use(passport.session());
 
 app.use('/auth', authRoutes);
 app.use('/map', mapCreateRoutes);
+app.use('/ai', askAiRoute);
 
 
 
