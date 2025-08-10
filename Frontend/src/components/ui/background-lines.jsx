@@ -14,7 +14,7 @@ export const BackgroundLines = ({
   return (
     <div
       className={cn(
-        "relative h-[20rem] md:h-screen  w-full bg-white dark:bg-black",
+        "relative h-screen md:h-screen  w-full bg-white dark:bg-black bg-gradient-to-r from-[#434343] to-[#000000]",
         className
       )}
     >
@@ -70,10 +70,10 @@ const SVG = ({ svgOptions }) => {
       viewBox="0 0 1440 900"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      initial={{ opacity: 0.1 }}
-      animate={{ opacity: 1 }}
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 2 }}
       transition={{ duration: 5 }}
-      className="absolute inset-0 w-full h-full " 
+      className="absolute inset-0 w-full h-full mt-[-20rem] sm:mt-0" 
     >
       {paths.map((path, idx) => (
         <motion.path
