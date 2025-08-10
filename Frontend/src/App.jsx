@@ -1,9 +1,14 @@
 import React from 'react'
+import NavBar from './components/NavBar'
+import Home from './pages/Home'
 
 const App = () => {
   return (
-    <div>
-      <h1 className='bg-amber-500'>dnasjnjad</h1>
+    <div className='flex flex-col min-h-screen'>
+      {/* <NavBar/> */}
+
+      <Home/>
+
     </div>
   )
 }
