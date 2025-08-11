@@ -24,14 +24,15 @@ const StyledWrapper = styled.div`
   height: 30rem; /* Full screen height */
   background-color: black;
   
-  /* First layer: fade from black to transparent */
-  background-image: 
-    linear-gradient(to bottom, black 0%, rgba(0,0,0,0) 40%),
-    radial-gradient(rgba(255, 255, 255, 0.171) 2px, transparent 0);
-  
-  /* Dot grid spacing */
-  background-size: 100% 100%, 30px 30px;
-  background-position: 0 0, -5px -5px;
+background-image: 
+  linear-gradient(to bottom, black 0%, rgba(0,0,0,0) 40%),    /* top fade */
+  linear-gradient(to top, black 0%, rgba(0,0,0,0) 40%),       /* bottom fade */
+  radial-gradient(rgba(255, 255, 255, 0.171) 2px, transparent 0); /* dots */
+
+background-size: 100% 40%, 100% 40%, 30px 30px;
+background-position: 0 0, 0 100%, -5px -5px;
+background-repeat: no-repeat, no-repeat, repeat;
+
 }
 `;
 
