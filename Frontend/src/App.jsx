@@ -7,6 +7,7 @@ import { InfiniteMovingCardsDemo } from './components/InfiniteMovingCardsDemo'
 import Faq from './components/Faq'
 import { Routes, Route, Link } from "react-router-dom";
 import Chat from './pages/Chat'
+import ConceptMap from './pages/ConceptMap'
 
 const App = () => {
   return (
@@ -22,6 +23,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/chat" element={<Chat />} />
+        <Route path="/5depth" element={<ConceptMap />} />
+
       </Routes>
 
       
