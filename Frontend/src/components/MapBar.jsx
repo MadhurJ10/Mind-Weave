@@ -20,8 +20,8 @@ const MapBar = ({ onClose }) => {
         <div className='h-[25rem] w-full bg-black'>
 
           <Test3/>
-          <Test4/>
-          <Test5/>
+          {/* <Test4/> */}
+          {/* <Test5/> */}
         </div>
       </div>
     </div>
