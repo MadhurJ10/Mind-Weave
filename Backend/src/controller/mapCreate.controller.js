@@ -69,7 +69,7 @@ The final output must be a single JSON array containing multiple node objects. T
 
 Ensure the final output is a valid JSON array containing all 22 nodes (1 + 3 + 6 + 12) and strictly follows all specified ID, depth, parent, children, and color values.`,
 
-5:`You are an AI assistant designed to generate structured data for creating concept maps. Your task is to generate a list of nodes for a concept map about the central topic: "Nodejs".
+        5: `You are an AI assistant designed to generate structured data for creating concept maps. Your task is to generate a list of nodes for a concept map about the central topic: "Nodejs".
 
 The output must be a clean JSON array of objects, with no extra text or explanations.
 
@@ -91,7 +91,7 @@ Follow these rules for generation:
     * Do not include the color or baseStyle properties in your output.
 
 **Central Topic:** "Nodejs"`,
-6:`You are an AI assistant designed to generate structured data for creating concept maps. Your task is to generate a list of nodes for a concept map about the central topic: "operating system".
+        6: `You are an AI assistant designed to generate structured data for creating concept maps. Your task is to generate a list of nodes for a concept map about the central topic: "${content}".
 
 The output must be a clean JSON array of objects, with no surrounding text or explanations.
 
@@ -116,71 +116,69 @@ Follow these rules for generation:
 
     The required structure is: { "id": "...", "label": "...", "background": "..." }.
 
-**Central Topic:** "operating system"`
+**Central Topic:** "${content}"`,
+        7: `Generate a concept map on the topic of "${content}" for my "Mind Weave" application. The output must be a single JSON object.
+
+Follow these rules precisely:
+1.  **JSON Structure:** The top-level keys should be sequential integers starting from '1'. The value for each key must be an object with three properties: id (a string version of the key), label (the concept name as a string), and background (a hex color code as a string).
+2.  **Hierarchy:**
+    * The first item (key '1') should be the central topic.
+    * Identify 3-4 main sub-topics that branch from the central topic.
+    * For each main sub-topic, provide 2-3 specific concepts or examples.
+3.  **Color Coding:**
+    * The central topic (item '1') must have a unique, vibrant background color (e.g., a shade of pink, red, or purple).
+    * All direct sub-topics and their corresponding specific concepts must share the same background color. Each group of sub-topics should have a color that is distinct from the other groups and from the central topic.
+
+**Example for context (on the topic "React"):**
+{
+  "1": { "id": "1", "label": "React", "background": "#FF4081" },
+  "2": { "id": "2", "label": "Components", "background": "#B2DFDB" },
+  "3": { "id": "3", "label": "State Management", "background": "#FFCC80" },
+  "4": { "id": "4", "label": "Lifecycle", "background": "#A7FFEB" },
+  "5": { "id": "5", "label": "Functional Components", "background": "#B2DFDB" },
+  "6": { "id": "6", "label": "Class Components", "background": "#B2DFDB" },
+  "7": { "id": "7", "label": "Redux", "background": "#FFCC80" },
+  "8": { "id": "8", "label": "Context API", "background": "#FFCC80" },
+  "9": { "id": "9", "label": "Mounting", "background": "#A7FFEB" },
+  "10": { "id": "10", "label": "Updating", "background": "#A7FFEB" }
+}
+
+Now, generate the JSON object for the topic: **${content}**.`
+,8: `Generate a concept map on the topic of "${content}" for my "Mind Weave" application. The output must be a single JSON object containing exactly 22 nodes.
+
+Follow these rules precisely:
+
+JSON Structure: The top-level keys must be sequential integers from '1' to '22'. The value for each key must be an object with three properties: id (a string version of the key), label (the concept name as a string), and background (a hex color code as a string).
+
+Hierarchy and Node Count: The map must be structured with a specific hierarchy to ensure a total of 22 nodes:
+
+Item '1': The central topic.
+
+Items '2', '3', '4': Exactly 3 main sub-topics that branch from the central topic.
+
+Items '5' - '22': For each of the 3 main sub-topics, provide exactly 6 specific concepts or examples. This will create three groups of six specific concepts.
+
+Color Coding:
+
+The central topic (item '1') must have a unique, vibrant background color (e.g., a shade of pink, red, or purple).
+
+The first main sub-topic (item '2') and its six specific concepts must all share one distinct color.
+
+The second main sub-topic (item '3') and its six specific concepts must all share a second distinct color.
+
+The third main sub-topic (item '4') and its six specific concepts must all share a third distinct color.`
     };
 
 
     try {
         const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-        // const prompt = `
-        //     You are an expert system designed to create structured mind map data. Your task is to generate a hierarchical mind map for a given topic with a specified depth.
-
-        // Instructions:
-
-        // Read the user's {TOPIC:"react"} and {DEPTH:4}.
-
-        // Generate a JSON array of objects representing the mind map.
-
-        // The final output must be only the JSON array, with no introductory text, explanations, or markdown formatting.
-
-        // JSON Object Schema:
-        // Each object in the array must have the following keys:
-
-        // id: A unique string identifier (e.g., "main_topic", "sub_a", "sub_a_1").
-
-        // text: The string label for the node.
-
-        // depth: A 0-indexed integer representing the level in the hierarchy.
-
-        // parent: The id of the parent node. The root node must have parent: null.
-
-        // children: An array of strings, where each string is the id of a direct child node. Leaf nodes must have children: [].
-
-        // color: A string representing the color class. Assign colors based on depth:
-
-        // depth 0: "color-orange"
-
-        // depth 1: "color-blue"
-
-        // depth 2: "color-green"
-
-        // depth 3: "color-light-purple"
-
-        // depth 4: "color-yellow"
-
-        // Rules:
-
-        // The hierarchy must be logical and consistent. A child's depth must be its parent's depth + 1.
-
-        // The parent and children properties must be consistent across all nodes.
-
-        // The mind map should reach the user-specified {{DEPTH:4} where logically possible.`
-        //         const prompt = `Generate a JSON array representing a concept map for the topic: "react". The structure should include:
-
-        // A main node with id: 'main_topic', text: 'YOUR_TOPIC', depth: 0, parent: null, and children: ['subtopic_a', 'subtopic_b', 'subtopic_c'], and color: 'color-orange'.
-
-        // Three subtopics (subtopic_a, subtopic_b, subtopic_c) with depth: 1, appropriate text labels related to the topic, and each having 2 children.
-
-        // Each of those 6 child nodes (sub_a_1, sub_a_2, sub_b_1, etc.) should be depth: 2, have no children, and have color 'color-green'.
-
-        // The JSON must follow this exact structure and use these specific IDs and depth values.`
-        console.log(promptt[ 6 ])
-        const result = await model.generateContent(promptt[ 6 ]);
+        // console.log(promptt[ 6 ])
+        const result = await model.generateContent(promptt[ 8 ]);
         const response = result.response
         // console.log(response)
         return res.json({
-            msg: "worked",
-            response
+            msg: `${content} mind map`,
+            text: response.candidates[ 0 ].content.parts[ 0 ].text
         })
     } catch (error) {
         res.json({
