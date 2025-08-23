@@ -23,7 +23,7 @@ const MessageInput = ({ setIsMapBarOpen }) => {
                     content: data.text,
                     depth: data.depth,
                 },
-                { headers: { Authorization: "your-token-here" } }
+                { headers: { Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5ZGFhMGEzLTY3MzgtNDhkYi1iYzcwLWFiMDYxN2QzNzkwOSIsImlhdCI6MTc1NTkyODU0OSwiZXhwIjoxNzU2MDE0OTQ5fQ.VJ1IrIdAqkKUmWyYu-SDU7SEnnNb-RC0_jpxq8_deMw" } }
             );
 
             const cleaned = await cleanAndParse(response.data.text);
