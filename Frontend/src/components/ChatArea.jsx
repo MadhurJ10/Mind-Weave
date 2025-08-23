@@ -1,7 +1,7 @@
 import React from 'react'
 import MessageInput from './MessageInput'
 
-const ChatArea = ({ IsSideBarOpen }) => {
+const ChatArea = ({ IsSideBarOpen , setIsMapBarOpen }) => {
     return (
         <div className='flex-grow'>
             <div className={`h-screen bg-green-700 transition-all duration-300 w-full flex flex-col`}>
@@ -9,7 +9,7 @@ const ChatArea = ({ IsSideBarOpen }) => {
                     {/* Chat messages will go here */}
                 </div>
                 <div className="p-4">
-                    <MessageInput/>
+                    <MessageInput setIsMapBarOpen={setIsMapBarOpen}/>
                 </div>
             </div>
         </div>

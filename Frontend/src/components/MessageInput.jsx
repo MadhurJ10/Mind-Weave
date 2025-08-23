@@ -1,44 +1,35 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { addData, setLatest } from '../features/conceptMapSlice';
+import { addData, setLatest } from "../features/conceptMapSlice";
 import { useDispatch, useSelector } from "react-redux";
-import axios from 'axios'
+import axios from "axios";
 
-
-
-
-const MessageInput = () => {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+const MessageInput = ({ setIsMapBarOpen }) => {
+    const { register, handleSubmit, reset } = useForm();
     const dispatch = useDispatch();
-    // Add this selector to monitor your state
     const conceptMapData = useSelector((state) => state.conceptMap.data);
     const latestData = useSelector((state) => state.conceptMap.latest);
 
     async function cleanAndParse(jsonString) {
         const cleared = jsonString.replace(/```json|```/g, "").trim();
-
         return JSON.parse(cleared);
     }
 
     const onSubmit = async (data) => {
         try {
-            const response = await axios.post("http://localhost:3000/map/create", {
-                content: data.text,
-                depth: "3"
-            }, {
-                headers: {
-                    "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5ZGFhMGEzLTY3MzgtNDhkYi1iYzcwLWFiMDYxN2QzNzkwOSIsImlhdCI6MTc1NTc1MzQyMiwiZXhwIjoxNzU1ODM5ODIyfQ.yNywrb548HzyfmX8cbWtELF307PHFyzMqhTdCrUlFHM",
-                }
-            });
+            const response = await axios.post(
+                "http://localhost:3000/map/create",
+                {
+                    content: data.text,
+                    depth: data.depth,
+                },
+                { headers: { Authorization: "your-token-here" } }
+            );
 
             const cleaned = await cleanAndParse(response.data.text);
-            // Remove the 'heheh' dispatch and only dispatch the cleaned data
             dispatch(addData(cleaned));
             dispatch(setLatest(cleaned));
-
-            // Add this to verify the data was dispatched
-            console.log('Updated store data:', latestData);
-
+            setIsMapBarOpen(true); //to open concept map after receving data from backend
             reset();
         } catch (error) {
             console.log(error);
@@ -46,26 +37,66 @@ const MessageInput = () => {
     };
 
     useEffect(() => {
-        console.log('latest map data changed:', latestData);
-        console.log('map data changed:', conceptMapData);
+        console.log("latest map data changed:", latestData);
+        console.log("map data changed:", conceptMapData);
     }, [ latestData ]);
 
     return (
-        <div className='flex px-36 py-1.5 rounded-lg '>
-            <div className='bg-gray-700 border h-[3.1rem] rounded-3xl px-4  text-white focus:outline-none flex flex-row justify-between'>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <input
-                        {...register('text')}
-                        type="text"
-                        placeholder="Type a message..."
-                        className='bg-gray-700 w-[40rem]  h-12 rounded-3xl px-4 text-white focus:outline-none'
-                    />
-                    <button type='submit' ><i className="ri-send-plane-fill"></i></button>
-                </form>
+        <div className="flex justify-center w-full px-6 py-3 bg-black">
+            <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="flex items-center gap-4 w-full max-w-4xl bg-gray-800 rounded-3xl px-4 py-2"
+            >
+                {/* Depth Selector with Tooltip */}
+                <div className="flex flex-col text-sm text-gray-300 relative group">
+                    <span className="font-medium text-gray-400 mb-1 cursor-help">
+                        Depth
+                    </span>
 
-            </div>
+                    {/* Tooltip */}
+                    <div className="absolute -top-12 left-0 hidden group-hover:block bg-gray-900 text-gray-200 text-xs rounded-md px-3 py-1 shadow-lg whitespace-nowrap">
+                        Controls how detailed the concept map will be
+                    </div>
+
+                    {/* Toggle Buttons */}
+                    <div className="flex bg-gray-700 rounded-lg overflow-hidden">
+                        {[ 3, 4, 5 ].map((num) => (
+                            <label
+                                key={num}
+                                className="flex-1 text-center px-3 py-1 cursor-pointer hover:bg-gray-600 transition-colors"
+                            >
+                                <input
+                                    type="radio"
+                                    {...register("depth", { required: true })}
+                                    value={num}
+                                    className="hidden peer"
+                                />
+                                <span className="peer-checked:bg-blue-600 peer-checked:text-white block rounded-md px-2 py-1">
+                                    {num}
+                                </span>
+                            </label>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Text Input */}
+                <input
+                    {...register("text", { required: true })}
+                    type="text"
+                    placeholder="Type a message..."
+                    className="flex-1 bg-gray-700 h-11 rounded-3xl px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+
+                {/* Send Button - circular FAB style */}
+                <button
+                    type="submit"
+                    className="flex items-center justify-center w-11 h-11 bg-blue-600 rounded-full hover:bg-blue-500 transition-colors shadow-md"
+                >
+                    <i className="ri-send-plane-fill text-white text-lg"></i>
+                </button>
+            </form>
         </div>
-    )
-}
+    );
+};
 
-export default MessageInput
+export default MessageInput;

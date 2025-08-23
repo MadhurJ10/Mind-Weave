@@ -144,7 +144,7 @@ Follow these rules precisely:
 }
 
 Now, generate the JSON object for the topic: **${content}**.`
-,8: `Generate a concept map on the topic of "${content}" for my "Mind Weave" application. The output must be a single JSON object containing exactly 22 nodes.
+        , 8: `Generate a concept map on the topic of "${content}" for my "Mind Weave" application. The output must be a single JSON object containing exactly 22 nodes.
 
 Follow these rules precisely:
 
@@ -173,10 +173,12 @@ The third main sub-topic (item '4') and its six specific concepts must all share
     try {
         const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
         // console.log(promptt[ 6 ])
-        const result = await model.generateContent(promptt[ 8 ]);
+        const result = await model.generateContent(promptt[ 7 ]);
+        //7 is for 3 depth , 8 is for 4th depth
         const response = result.response
         // console.log(response)
         return res.json({
+            depth,
             msg: `${content} mind map`,
             text: response.candidates[ 0 ].content.parts[ 0 ].text
         })

@@ -102,7 +102,7 @@ export default function Test4Redux() {
       initialNodes: layoutLR(rawNodes, rawEdges),
       initialEdges: rawEdges.map((e) => ({
         ...e,
-        type: "bezier",
+        type: "default",
         animated: true,
         markerEnd: { type: MarkerType.ArrowClosed },
       })),

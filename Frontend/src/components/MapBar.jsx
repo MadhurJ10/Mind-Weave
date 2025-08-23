@@ -19,8 +19,8 @@ const MapBar = ({ onClose }) => {
         {/* Add your map content here */}
         <div className='h-[25rem] w-full bg-black'>
 
-          {/* <Test3 /> */}
-          <Test4 />
+          <Test3 />
+          {/* <Test4 /> */}
           {/* <Test5/> */}
         </div>
       </div>
