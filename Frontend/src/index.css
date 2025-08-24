@@ -10,3 +10,41 @@
     }
   }
 }
+
+/* index.css or globals.css */
+@font-face {
+  font-family: "instrumentitalic";
+  src: url("/Frontend/src/assets/fonts/instrumentserif-italic.ttf") format("truetype");
+}
+
+.font-instrumentitalic {
+  font-family: "instrumentitalic", serif;
+}
+
+@font-face {
+  font-family: "instrumentregular";
+  src: url("/Frontend/src/assets/fonts/instrumentserif-regular.ttf") format("truetype");
+}
+
+.font-instrumentregular {
+  font-family: "instrumentregular", serif;
+}
+
+@font-face {
+  font-family: "satoshiregular";
+  src: url("/Frontend/src/assets/fonts/Satoshi-Regular.otf") format("opentype");
+}
+
+.font-satoshi {
+  font-family: "satoshiregular", sans-serif;
+}
+
+
+@font-face {
+  font-family: "dm";
+  src: url("/Frontend/src/assets/fonts/DMSans-Bold.ttf") format("opentype");
+}
+
+.font-dm {
+  font-family: "dm", sans-serif;
+}
