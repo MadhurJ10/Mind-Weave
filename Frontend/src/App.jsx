@@ -11,14 +11,14 @@ import Chat from './pages/Chat'
 
 const App = () => {
   return (
-    <div className='flex flex-col min-h-screen '>
-      {/* <NavBar/> */}
-{/* 
-      <Home/>
+    <div className='flex flex-col min-h-screen relative '>
+      <NavBar/>
+
+      {/* <Home/>
       <Pattern/>
       <HowItWorks/>
-      <Faq/> */}
-      {/* <InfiniteMovingCardsDemo/> */}
+      <Faq/>
+      <InfiniteMovingCardsDemo/> */}
 
       <Routes>
         <Route path="/" element={<Home />} />
