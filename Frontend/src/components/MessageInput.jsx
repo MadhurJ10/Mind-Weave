@@ -62,7 +62,7 @@ const MessageInput = ({ setIsMapBarOpen, setIsDepth }) => {
 
                     {/* Toggle Buttons */}
                     <div className="flex bg-gray-700 rounded-lg overflow-hidden">
-                        {[ 3, 4, 5 ].map((num) => (
+                        {[ 3, 4 ].map((num) => (
                             <label
                                 key={num}
                                 className="flex-1 text-center px-3 py-1 cursor-pointer hover:bg-gray-600 transition-colors"
