@@ -1,28 +1,17 @@
-// Home.jsx
-import React from "react";
-import { BackgroundLines } from "../components/ui/background-lines"; // adjust the path if needed
-import NavBar from "../components/NavBar";
+import React from 'react'
 
-
-export default function Home() {
+const Home = () => {
   return (
-    <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
-      <NavBar/>
-      <h2
-        className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight"
-      >
-        {/* Sanjana Airlines, <br /> Sajana Textiles. */}
-        Weave Your Thoughts <br /> into Clarity
-      </h2>
-      <p
-        className="max-w-xl mx-auto text-sm md:text-lg text-neutral-700 dark:text-neutral-400 text-center"
-      >
-        {/* Get the best advices from our experts, including expert artists,
-        painters, marathon enthusiasts and RDX, totally free. */}
+    <div>
+      {/* First Page */}
+      <div className="w-full h-lvh bg-gradient-to-b from-black from-[18%] to-[#ff0000]">
+      </div>
 
-        MindWeave transforms your ideas into intelligent, interactive maps - helping you think faster,
-         work smarter, and <br /> create with confidence.
-      </p>
-    </BackgroundLines>
-  );
+      {/* Second Page */}
+      <div className="w-full h-lvh bg-gradient-to-b from-[#ff0000] from-[0%] to-black to-[30%]">
+      </div>
+    </div>
+  )
 }
+
+export default Home

@@ -44,7 +44,7 @@ const MessageInput = ({ setIsMapBarOpen, setIsDepth }) => {
     }, [ latestData ]);
 
     return (
-        <div className="flex justify-center w-full px-6 py-3 bg-black">
+        <div className="flex justify-center w-full px-6 py-3 ">
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="flex items-center gap-4 w-full max-w-4xl bg-gray-800 rounded-3xl px-4 py-2"
