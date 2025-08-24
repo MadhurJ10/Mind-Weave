@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { addData, setLatest } from "../features/conceptMapSlice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
-const MessageInput = ({ setIsMapBarOpen }) => {
+
+const MessageInput = ({ setIsMapBarOpen, setIsDepth }) => {
     const { register, handleSubmit, reset } = useForm();
     const dispatch = useDispatch();
     const conceptMapData = useSelector((state) => state.conceptMap.data);
@@ -23,10 +24,11 @@ const MessageInput = ({ setIsMapBarOpen }) => {
                     content: data.text,
                     depth: data.depth,
                 },
-                { headers: { Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5ZGFhMGEzLTY3MzgtNDhkYi1iYzcwLWFiMDYxN2QzNzkwOSIsImlhdCI6MTc1NTkyODU0OSwiZXhwIjoxNzU2MDE0OTQ5fQ.VJ1IrIdAqkKUmWyYu-SDU7SEnnNb-RC0_jpxq8_deMw" } }
+                { headers: { Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5ZGFhMGEzLTY3MzgtNDhkYi1iYzcwLWFiMDYxN2QzNzkwOSIsImlhdCI6MTc1NjAxNjI1NywiZXhwIjoxNzU2MTAyNjU3fQ.OxIFQzB1c-x6LmredrCj4GHI5vUgqfxMbZpXIiQ5YkY" } }
             );
 
             const cleaned = await cleanAndParse(response.data.text);
+            setIsDepth(data.depth);
             dispatch(addData(cleaned));
             dispatch(setLatest(cleaned));
             setIsMapBarOpen(true); //to open concept map after receving data from backend

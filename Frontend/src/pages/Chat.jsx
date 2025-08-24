@@ -6,6 +6,7 @@ import MapBar from '../components/MapBar';
 const Chat = () => {
   const [ IsSideBarOpen, setIsSideBarOpen ] = React.useState(true);
   const [ IsMapBarOpen, setIsMapBarOpen ] = React.useState(false);
+  const [IsDepth, setIsDepth] = React.useState(null);
   
   function toggleButton() {
     setIsSideBarOpen(prev => !prev)
@@ -22,10 +23,10 @@ const Chat = () => {
         {!IsSideBarOpen && <button className='p-2' onClick={toggleButton}>open</button>}
       </div>
       <div className='flex flex-1 relative'>
-        <ChatArea IsSideBarOpen={IsSideBarOpen} IsMapBarOpen={IsMapBarOpen} setIsMapBarOpen={setIsMapBarOpen} />
+        <ChatArea IsSideBarOpen={IsSideBarOpen} IsMapBarOpen={IsMapBarOpen} setIsMapBarOpen={setIsMapBarOpen} setIsDepth={setIsDepth}/>
         <div className='absolute right-0 top-0 h-full'>
           {IsMapBarOpen ? (
-            <MapBar onClose={toggleMapBar} />
+            <MapBar onClose={toggleMapBar} setIsDepth={setIsDepth} IsDepth={IsDepth}/>
           ) : (
             <button 
               className='bg-blue-500 text-white p-2 rounded-l-md'

@@ -3,7 +3,7 @@ import Test3 from './Test3'
 import Test4 from './Test4'
 import Test5 from './Test5'
 
-const MapBar = ({ onClose }) => {
+const MapBar = ({ onClose , setIsDepth  , IsDepth}) => {
   return (
     <div className='w-[40rem] h-full bg-white border-l shadow-lg'>
       <div className='p-4 border-b flex justify-between items-center'>
@@ -19,7 +19,10 @@ const MapBar = ({ onClose }) => {
         {/* Add your map content here */}
         <div className='h-[25rem] w-full bg-black'>
 
-          <Test3 />
+          {IsDepth == 3 && <Test3/>}
+          {IsDepth == 4 && <Test4/>}
+
+          {/* <Test3 /> */}
           {/* <Test4 /> */}
           {/* <Test5/> */}
         </div>
