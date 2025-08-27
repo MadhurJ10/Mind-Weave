@@ -24,7 +24,7 @@ const MessageInput = ({ setIsMapBarOpen, setIsDepth }) => {
                     content: data.text,
                     depth: data.depth,
                 },
-                { headers: { Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5ZGFhMGEzLTY3MzgtNDhkYi1iYzcwLWFiMDYxN2QzNzkwOSIsImlhdCI6MTc1NjAxNjI1NywiZXhwIjoxNzU2MTAyNjU3fQ.OxIFQzB1c-x6LmredrCj4GHI5vUgqfxMbZpXIiQ5YkY" } }
+                { headers: { Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5ZGFhMGEzLTY3MzgtNDhkYi1iYzcwLWFiMDYxN2QzNzkwOSIsImlhdCI6MTc1NjMyMDY2NywiZXhwIjoxNzU2NDA3MDY3fQ.oxTeykM8rVSgYYMx4RWCG02_XxFnAvuMpV5iLnJ2BhI" } }
             );
 
             const cleaned = await cleanAndParse(response.data.text);
@@ -47,25 +47,27 @@ const MessageInput = ({ setIsMapBarOpen, setIsDepth }) => {
         <div className="flex justify-center w-full px-6 py-3 ">
             <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="flex items-center gap-4 w-full max-w-4xl bg-gray-800 rounded-3xl px-4 py-2"
+                className="flex items-center gap-4 w-full max-w-4xl 
+             bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] 
+             rounded-3xl px-4 py-2 shadow-lg border border-zinc-800"
             >
-                {/* Depth Selector with Tooltip */}
-                <div className="flex flex-col text-sm text-gray-300 relative group">
-                    <span className="font-medium text-gray-400 mb-1 cursor-help">
-                        Depth
-                    </span>
+                {/* Depth Selector */}
+                <div className="flex flex-col text-sm text-gray-400 relative group">
+                    <span className="font-medium mb-1 cursor-help">Depth</span>
 
                     {/* Tooltip */}
-                    <div className="absolute -top-12 left-0 hidden group-hover:block bg-gray-900 text-gray-200 text-xs rounded-md px-3 py-1 shadow-lg whitespace-nowrap">
+                    <div className="absolute -top-12 left-0 hidden group-hover:block 
+                    bg-black/90 text-gray-200 text-xs rounded-md 
+                    px-3 py-1 shadow-lg whitespace-nowrap border border-red-600/40">
                         Controls how detailed the concept map will be
                     </div>
 
                     {/* Toggle Buttons */}
-                    <div className="flex bg-gray-700 rounded-lg overflow-hidden">
+                    <div className="flex bg-[#1f1f1f] rounded-xl overflow-hidden border border-red-600/40">
                         {[ 3, 4 ].map((num) => (
                             <label
                                 key={num}
-                                className="flex-1 text-center px-3 py-1 cursor-pointer hover:bg-gray-600 transition-colors"
+                                className="flex-1 text-center px-3 py-1 cursor-pointer transition-colors"
                             >
                                 <input
                                     type="radio"
@@ -73,7 +75,9 @@ const MessageInput = ({ setIsMapBarOpen, setIsDepth }) => {
                                     value={num}
                                     className="hidden peer"
                                 />
-                                <span className="peer-checked:bg-blue-600 peer-checked:text-white block rounded-md px-2 py-1">
+                                <span className="peer-checked:bg-red-600 peer-checked:text-white 
+                           block rounded-md px-2 py-1 transition-all
+                           hover:bg-red-700 hover:text-white">
                                     {num}
                                 </span>
                             </label>
@@ -86,17 +90,25 @@ const MessageInput = ({ setIsMapBarOpen, setIsDepth }) => {
                     {...register("text", { required: true })}
                     type="text"
                     placeholder="Type a message..."
-                    className="flex-1 bg-gray-700 h-11 rounded-3xl px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="flex-1 bg-transparent h-11 rounded-3xl px-4 
+               text-white placeholder-gray-500 
+               border border-zinc-700 
+               focus:outline-none focus:ring-2 focus:ring-red-500 
+               focus:border-red-600 transition-all"
                 />
 
-                {/* Send Button - circular FAB style */}
+                {/* Send Button */}
                 <button
                     type="submit"
-                    className="flex items-center justify-center w-11 h-11 bg-blue-600 rounded-full hover:bg-blue-500 transition-colors shadow-md"
+                    className="flex items-center justify-center w-11 h-11 
+               bg-red-600 rounded-full 
+               hover:scale-105 hover:shadow-[0_0_10px_#ff0000] 
+               transition-all"
                 >
                     <i className="ri-send-plane-fill text-white text-lg"></i>
                 </button>
             </form>
+
         </div>
     );
 };

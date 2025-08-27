@@ -169,9 +169,7 @@ const Home = () => {
   </div>
 
   {/* Footer overlay */}
-  <div className="absolute bottom-0 w-full h-[80%] bg-black/60 rounded-t-4xl flex items-center justify-center">
   
-  </div>
 </div>
 
 
