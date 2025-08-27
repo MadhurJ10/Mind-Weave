@@ -4,59 +4,61 @@ import imgg from '../assets/imgg.png'
 import img from '../assets/img.png'
 import imggg from '../assets/imggg.png'
 import ReviewCard from '../components/ReviewCard'
+import { Link } from 'react-router-dom'
 
-const  review = {
+
+const review = {
   "Mindweave_Reviews": [
     {
       "name": "Rebecca Down",
       "date": "2022-03-17",
       "review": "MindWeave transformed the way I organize my thoughts. It turned my messy ideas into clear, structured maps that made complex projects easier to manage. I now approach every challenge with confidence and clarity, saving hours each week.",
-      "img": { 
+      "img": {
         "src": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
-        "alt": "Smiling young woman with long hair" 
+        "alt": "Smiling young woman with long hair"
       }
     },
     {
       "name": "Francesca Cox",
       "date": "2021-12-26",
       "review": "Using MindWeave feels like having a personal assistant for my brain. The AI-driven maps made brainstorming faster, smoother, and surprisingly fun. It gave me focus when I was overwhelmed, and now it’s an essential tool for my studies.",
-      "img": { 
+      "img": {
         "src": "https://images.unsplash.com/photo-1502685104226-ee32379fefbe",
-        "alt": "Confident woman in glasses smiling" 
+        "alt": "Confident woman in glasses smiling"
       }
     },
     {
       "name": "Sarah Robinson",
       "date": "2021-11-30",
       "review": "MindWeave helped me break down complex topics into simple, visual pathways. It’s like zooming out on my thoughts and instantly seeing the bigger picture. I’ve used it for research, projects, and even daily planning—it never disappoints.",
-      "img": { 
+      "img": {
         "src": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
-        "alt": "Smiling woman with curly hair" 
+        "alt": "Smiling woman with curly hair"
       }
     },
     {
       "name": "Helen Brown",
       "date": "2021-09-02",
       "review": "I used MindWeave to prepare for a major presentation, and it completely changed my process. Instead of scattered notes, I had a beautifully structured flow of ideas. My audience said it was the clearest talk I’d ever given.",
-      "img": { 
+      "img": {
         "src": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1",
-        "alt": "Professional woman smiling in office" 
+        "alt": "Professional woman smiling in office"
       }
     },
     {
       "name": "Anonymous",
       "review": "As a developer, MindWeave has become my go-to tool for planning projects. The ability to visually connect APIs, features, and workflows makes collaboration so much easier. My team now uses it regularly to align ideas before coding begins.",
-      "img": { 
+      "img": {
         "src": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61",
-        "alt": "Male software developer working at desk" 
+        "alt": "Male software developer working at desk"
       }
     },
     {
       "name": "Anonymous",
       "review": "MindWeave is more than just a concept-mapping tool—it’s a creativity booster. I’ve used it for hackathon planning, project design, and even personal goals. Every time, it helps me cut through chaos and build something meaningful with clarity.",
-      "img": { 
+      "img": {
         "src": "https://images.unsplash.com/photo-1544723795-3fb6469f5b39",
-        "alt": "Young man smiling outdoors" 
+        "alt": "Young man smiling outdoors"
       }
     }
   ]
@@ -74,7 +76,8 @@ const Home = () => {
         <div className='flex flex-col gap-[1.5rem]'>
           <h1 className='text-6xl font-dm '>From scattered thoughts to structured clarity <br /> - that's MindWeave</h1>
           <p className='text-[#8B8B8B] font-bold'>Turn your messy brainstorms into organized, meaningful maps - MindWeave <br /> makes thinking, connecting, and learning beautifully simple.</p>
-          <button className='self-center bg-[#FF4533] px-6 py-3 font-medium border border-[#9B170B] border-dashed rounded-lg hover:bg-[#FF2410]'>Start Mapping</button>
+          {/* <button className='self-center bg-[#FF4533] px-6 py-3 font-medium border border-[#9B170B] border-dashed rounded-lg hover:bg-[#FF2410]'>Start Mapping</button> */}
+          <Link className='self-center bg-[#FF4533] px-6 py-3 font-medium border border-[#9B170B] border-dashed rounded-lg hover:bg-[#FF2410]' to="/chat">Start Mapping</Link>
         </div>
       </div>
       <div className='cards flex flex-col bg-black gap-[2rem]'>
@@ -145,14 +148,15 @@ const Home = () => {
 
       <div className="Testimonial flex flex-col justify-center bg-black py-16 px-6 md:px-12">
         {/* Section Title */}
-        <div className="bg-[#111111] rounded-lg border border-[#252525] font-medium self-center px-5 py-1.5 text-white mb-10">
-          Testimonials
+        <div className="flex flex-col items-center text-center">
+          <div className='bg-[#111111] rounded-lg border border-[#252525] font-medium self-center px-5 py-1.5 text-white mb-10'>Testimonials</div>
+          <h1 className='text-white text-[3.2rem] font-medium leading-[4rem]'>There's a reason people <br /> are <span className='font-instrumentitalic'>raving</span> about us.</h1>
         </div>
 
         {/* Grid of ReviewCards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {review.Mindweave_Reviews.map((item, index)=>(
-            <ReviewCard key={index} name={item.name} review={item.review} img={item.img.src}/>  
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-[4rem]">
+          {review.Mindweave_Reviews.map((item, index) => (
+            <ReviewCard key={index} name={item.name} review={item.review} img={item.img.src} />
           ))}
         </div>
       </div>
