@@ -71,7 +71,7 @@ const review = {
 
 const Home = () => {
   return (
-    <div className='min-h-full flex flex-col'>
+    <div className='min-h-full flex flex-col bg-black'>
       <div className='Herosection bg-black text-white flex flex-col items-center h-lvh text-center justify-center '>
         <div className='flex flex-col gap-[1.5rem]'>
           <h1 className='text-6xl font-dm '>From scattered thoughts to structured clarity <br /> - that's MindWeave</h1>
@@ -160,6 +160,20 @@ const Home = () => {
           ))}
         </div>
       </div>
+
+      <div className="h-screen bg-black flex items-center justify-center flex-col relative">
+  {/* Glowing orb */}
+  <div className="w-[500px] h-[500px] rounded-full 
+                  bg-[radial-gradient(circle,rgba(255,0,0,0.7)_0%,rgba(139,0,0,0.7)_25%,rgba(75,0,130,0.7)_50%,rgba(0,0,139,0.7)_75%,rgba(0,0,0,0.7)_100%)] 
+                  opacity-90 blur-3xl">
+  </div>
+
+  {/* Footer overlay */}
+  <div className="absolute bottom-0 w-full h-[80%] bg-black/60 rounded-t-4xl flex items-center justify-center">
+  
+  </div>
+</div>
+
 
 
 
