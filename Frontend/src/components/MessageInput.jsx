@@ -24,7 +24,7 @@ const MessageInput = ({ setIsMapBarOpen, setIsDepth }) => {
                     content: data.text,
                     depth: data.depth,
                 },
-                { headers: { Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5ZGFhMGEzLTY3MzgtNDhkYi1iYzcwLWFiMDYxN2QzNzkwOSIsImlhdCI6MTc1NjMyMDY2NywiZXhwIjoxNzU2NDA3MDY3fQ.oxTeykM8rVSgYYMx4RWCG02_XxFnAvuMpV5iLnJ2BhI" } }
+                { headers: { Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIxYzYwMzgzLWYxMmUtNGZmMy04NGJmLWM2OTE5ZTRkNzYwYSIsImlhdCI6MTc1NjM4Njc5OSwiZXhwIjoxNzU2NDczMTk5fQ.LLf2i7nA4Sc6aviEDa8foqNTwyfgxaTg9jl9RjOXj1w" } }
             );
 
             const cleaned = await cleanAndParse(response.data.text);

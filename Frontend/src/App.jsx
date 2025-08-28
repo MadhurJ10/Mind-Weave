@@ -7,6 +7,10 @@ import Pattern from './components/Pattern';
 import HowItWorks from './components/HowItWorks';
 import { InfiniteMovingCardsDemo } from './components/InfiniteMovingCardsDemo';
 import Faq from './components/Faq';
+import Login from './pages/Login';
+import Register from './pages/Register';
+
+
 
 const App = () => {
   return (
@@ -24,6 +28,9 @@ const App = () => {
           </>
         } />
         <Route path="/chat" element={<Chat />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
+
       </Routes>
     </div>
   );

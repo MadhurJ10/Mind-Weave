@@ -1,4 +1,6 @@
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
+import prisma from '../lib/prisma.js';
+
 
 export function setupGoogle(passport) {
   passport.use(new GoogleStrategy({
@@ -6,7 +8,7 @@ export function setupGoogle(passport) {
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: '/auth/google/callback',
   }, async (accessToken, refreshToken, profile, done) => {
-    const email = profile.emails[0].value;
+    const email = profile.emails[ 0 ].value;
 
     let user = await prisma.user.findUnique({ where: { email } });
 
@@ -15,10 +17,12 @@ export function setupGoogle(passport) {
         data: {
           email,
           name: profile.displayName,
-          oauthProvider: 'google',
-          oauthId: profile.id,
+          provider: "google",        // ✅ schema field
+          providerId: profile.id,    // ✅ schema field
+          image: profile.photos?.[ 0 ]?.value || null, // optional
         },
       });
+
     }
 
     return done(null, user);
