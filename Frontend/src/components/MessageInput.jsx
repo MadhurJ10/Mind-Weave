@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { addData, setLatest } from "../features/conceptMapSlice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import ApiClient from "../services/ApiClient";
 
 
 const MessageInput = ({ setIsMapBarOpen, setIsDepth }) => {
@@ -18,13 +19,12 @@ const MessageInput = ({ setIsMapBarOpen, setIsDepth }) => {
 
     const onSubmit = async (data) => {
         try {
-            const response = await axios.post(
-                "http://localhost:3000/map/create",
+            const response = await ApiClient.post(
+                "map/create",
                 {
                     content: data.text,
                     depth: data.depth,
-                },
-                { headers: { Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIxYzYwMzgzLWYxMmUtNGZmMy04NGJmLWM2OTE5ZTRkNzYwYSIsImlhdCI6MTc1NjM4Njc5OSwiZXhwIjoxNzU2NDczMTk5fQ.LLf2i7nA4Sc6aviEDa8foqNTwyfgxaTg9jl9RjOXj1w" } }
+                }
             );
 
             const cleaned = await cleanAndParse(response.data.text);
