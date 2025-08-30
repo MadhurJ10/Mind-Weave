@@ -68,6 +68,7 @@ function layoutLR(nodes, edges) {
 
 export default function Test3() {
   const conceptMapData = useSelector((state) => state.conceptMap.data);
+  const latestData = useSelector((state) => state.conceptMap.latest);
   console.log("Redux Data:", conceptMapData);
 
   // ✅ Get latest entry safely

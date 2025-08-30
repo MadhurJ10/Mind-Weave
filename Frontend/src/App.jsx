@@ -9,6 +9,8 @@ import { InfiniteMovingCardsDemo } from './components/InfiniteMovingCardsDemo';
 import Faq from './components/Faq';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Testaskai from './components/Testaskai';
+
 
 
 
@@ -30,6 +32,7 @@ const App = () => {
         <Route path="/chat" element={<Chat />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/testai" element={<Testaskai />} />
 
       </Routes>
     </div>
