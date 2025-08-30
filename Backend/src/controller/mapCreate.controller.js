@@ -8,115 +8,115 @@ export const mapCreate = async (req, res) => {
     const { content, depth } = req.body
 
     const promptt = {
-//         3: `Generate a JSON array representing a concept map for the topic: {operating system}. The structure should include:
+        //         3: `Generate a JSON array representing a concept map for the topic: {operating system}. The structure should include:
 
-// A main node with:
-// - id: 'main_topic'
-// - text: 'YOUR_TOPIC'
-// - depth: 0
-// - parent: null
-// - children: ['subtopic_a', 'subtopic_b', 'subtopic_c']
-// - color: 'color-orange'
+        // A main node with:
+        // - id: 'main_topic'
+        // - text: 'YOUR_TOPIC'
+        // - depth: 0
+        // - parent: null
+        // - children: ['subtopic_a', 'subtopic_b', 'subtopic_c']
+        // - color: 'color-orange'
 
-// Three subtopics:
-// - IDs: 'subtopic_a', 'subtopic_b', 'subtopic_c'
-// - depth: 1
-// - appropriate text labels related to the topic
-// - each having 2 children
+        // Three subtopics:
+        // - IDs: 'subtopic_a', 'subtopic_b', 'subtopic_c'
+        // - depth: 1
+        // - appropriate text labels related to the topic
+        // - each having 2 children
 
-// Each of those 6 child nodes:
-// - IDs: 'sub_a_1', 'sub_a_2', 'sub_b_1', 'sub_b_2', 'sub_c_1', 'sub_c_2'
-// - depth: 2
-// - no children
-// - color: 'color-green'
+        // Each of those 6 child nodes:
+        // - IDs: 'sub_a_1', 'sub_a_2', 'sub_b_1', 'sub_b_2', 'sub_c_1', 'sub_c_2'
+        // - depth: 2
+        // - no children
+        // - color: 'color-green'
 
-// The JSON must follow this exact structure and use these specific IDs and depth values.`,
-//         4: `Generate a JSON array representing a detailed, three-level concept map for the topic: "react".
+        // The JSON must follow this exact structure and use these specific IDs and depth values.`,
+        //         4: `Generate a JSON array representing a detailed, three-level concept map for the topic: "react".
 
-// The final output must be a single JSON array containing multiple node objects. The structure must be hierarchical and follow these exact specifications for each level:
+        // The final output must be a single JSON array containing multiple node objects. The structure must be hierarchical and follow these exact specifications for each level:
 
-// 1. **Main Topic Node (Depth 0):**
-//    * id: 'main_topic'
-//    * text: 'YOUR_TOPIC'
-//    * depth: 0
-//    * parent: null
-//    * children: ['subtopic_a', 'subtopic_b', 'subtopic_c']
-//    * color: 'color-orange'
+        // 1. **Main Topic Node (Depth 0):**
+        //    * id: 'main_topic'
+        //    * text: 'YOUR_TOPIC'
+        //    * depth: 0
+        //    * parent: null
+        //    * children: ['subtopic_a', 'subtopic_b', 'subtopic_c']
+        //    * color: 'color-orange'
 
-// 2. **Primary Subtopic Nodes (Depth 1):**
-//    * Create three nodes with ids: 'subtopic_a', 'subtopic_b', and 'subtopic_c'
-//    * text: relevant high-level subtopic label for 'YOUR_TOPIC'
-//    * depth: 1
-//    * parent: 'main_topic'
-//    * children: ['sub_a_1', 'sub_a_2'] / ['sub_b_1', 'sub_b_2'] / ['sub_c_1', 'sub_c_2']
-//    * color: 'color-blue'
+        // 2. **Primary Subtopic Nodes (Depth 1):**
+        //    * Create three nodes with ids: 'subtopic_a', 'subtopic_b', and 'subtopic_c'
+        //    * text: relevant high-level subtopic label for 'YOUR_TOPIC'
+        //    * depth: 1
+        //    * parent: 'main_topic'
+        //    * children: ['sub_a_1', 'sub_a_2'] / ['sub_b_1', 'sub_b_2'] / ['sub_c_1', 'sub_c_2']
+        //    * color: 'color-blue'
 
-// 3. **Secondary Subtopic Nodes (Depth 2):**
-//    * Six nodes: 'sub_a_1', 'sub_a_2', 'sub_b_1', 'sub_b_2', 'sub_c_1', 'sub_c_2'
-//    * text: more specific detail or example
-//    * depth: 2
-//    * parent: respective depth 1 ID
-//    * children: ['sub_a_1_1', 'sub_a_1_2'], etc.
-//    * color: 'color-purple'
+        // 3. **Secondary Subtopic Nodes (Depth 2):**
+        //    * Six nodes: 'sub_a_1', 'sub_a_2', 'sub_b_1', 'sub_b_2', 'sub_c_1', 'sub_c_2'
+        //    * text: more specific detail or example
+        //    * depth: 2
+        //    * parent: respective depth 1 ID
+        //    * children: ['sub_a_1_1', 'sub_a_1_2'], etc.
+        //    * color: 'color-purple'
 
-// 4. **Leaf Nodes (Depth 3):**
-//    * Twelve nodes: 'sub_a_1_1', 'sub_a_1_2', ..., 'sub_c_2_2'
-//    * text: granular detail or fact
-//    * depth: 3
-//    * parent: respective depth 2 ID
-//    * children: []
-//    * color: 'color-green'
+        // 4. **Leaf Nodes (Depth 3):**
+        //    * Twelve nodes: 'sub_a_1_1', 'sub_a_1_2', ..., 'sub_c_2_2'
+        //    * text: granular detail or fact
+        //    * depth: 3
+        //    * parent: respective depth 2 ID
+        //    * children: []
+        //    * color: 'color-green'
 
-// Ensure the final output is a valid JSON array containing all 22 nodes (1 + 3 + 6 + 12) and strictly follows all specified ID, depth, parent, children, and color values.`,
+        // Ensure the final output is a valid JSON array containing all 22 nodes (1 + 3 + 6 + 12) and strictly follows all specified ID, depth, parent, children, and color values.`,
 
-//         5: `You are an AI assistant designed to generate structured data for creating concept maps. Your task is to generate a list of nodes for a concept map about the central topic: "Nodejs".
+        //         5: `You are an AI assistant designed to generate structured data for creating concept maps. Your task is to generate a list of nodes for a concept map about the central topic: "Nodejs".
 
-// The output must be a clean JSON array of objects, with no extra text or explanations.
+        // The output must be a clean JSON array of objects, with no extra text or explanations.
 
-// Follow these rules for generation:
+        // Follow these rules for generation:
 
-// 1.  **Root Node:** The first node (id: "1") must be the central topic itself. Give it a strong, vibrant background color (e.g., an orange, blue, or deep purple).
+        // 1.  **Root Node:** The first node (id: "1") must be the central topic itself. Give it a strong, vibrant background color (e.g., an orange, blue, or deep purple).
 
-// 2.  **Primary Branches:** Identify 3 to 4 major sub-topics that branch directly from the root.
-//     * Assign each of these primary branches a unique and distinct pastel background color. These colors will define the "theme" for their children. For example, one branch could be light pink, another light blue, another light green.
+        // 2.  **Primary Branches:** Identify 3 to 4 major sub-topics that branch directly from the root.
+        //     * Assign each of these primary branches a unique and distinct pastel background color. These colors will define the "theme" for their children. For example, one branch could be light pink, another light blue, another light green.
 
-// 3.  **Child Nodes:** For each primary branch, generate 2 to 3 child nodes that are examples or components of that branch.
-//     * **Crucially, these child nodes MUST use the exact same background color as their parent primary branch.** This creates visual clusters.
+        // 3.  **Child Nodes:** For each primary branch, generate 2 to 3 child nodes that are examples or components of that branch.
+        //     * **Crucially, these child nodes MUST use the exact same background color as their parent primary branch.** This creates visual clusters.
 
-// 4.  **Formatting:** Each object in the array must have the following structure:
-//     { id: "sequential_number", data: { label: "Node Label" }, style: { background: "#hexcode" } }
+        // 4.  **Formatting:** Each object in the array must have the following structure:
+        //     { id: "sequential_number", data: { label: "Node Label" }, style: { background: "#hexcode" } }
 
-//     * The id must be a string that increments sequentially from "1".
-//     * The background must be a valid 6-digit hex color code.
-//     * Do not include the color or baseStyle properties in your output.
+        //     * The id must be a string that increments sequentially from "1".
+        //     * The background must be a valid 6-digit hex color code.
+        //     * Do not include the color or baseStyle properties in your output.
 
-// **Central Topic:** "Nodejs"`,
-//         6: `You are an AI assistant designed to generate structured data for creating concept maps. Your task is to generate a list of nodes for a concept map about the central topic: "${content}".
+        // **Central Topic:** "Nodejs"`,
+        //         6: `You are an AI assistant designed to generate structured data for creating concept maps. Your task is to generate a list of nodes for a concept map about the central topic: "${content}".
 
-// The output must be a clean JSON array of objects, with no surrounding text or explanations.
+        // The output must be a clean JSON array of objects, with no surrounding text or explanations.
 
-// Follow these rules for generation:
+        // Follow these rules for generation:
 
-// 1.  **Total Nodes:** You must generate a JSON array containing **exactly 10 objects** (nodes) in total.
+        // 1.  **Total Nodes:** You must generate a JSON array containing **exactly 10 objects** (nodes) in total.
 
-// 2.  **Structure:** The 10 nodes must be structured as follows:
-//     * **1 Root Node:** The central topic itself.
-//     * **3 Primary Branch Nodes:** The main sub-topics.
-//     * **6 Child Nodes:** Exactly 2 child nodes for each of the 3 primary branches.
+        // 2.  **Structure:** The 10 nodes must be structured as follows:
+        //     * **1 Root Node:** The central topic itself.
+        //     * **3 Primary Branch Nodes:** The main sub-topics.
+        //     * **6 Child Nodes:** Exactly 2 child nodes for each of the 3 primary branches.
 
-// 3.  **Color Coding:**
-//     * The root node must have a strong, vibrant background color.
-//     * Each of the 3 primary branches must have its own unique and distinct pastel background color.
-//     * The child nodes **MUST use the exact same background color** as their parent primary branch.
+        // 3.  **Color Coding:**
+        //     * The root node must have a strong, vibrant background color.
+        //     * Each of the 3 primary branches must have its own unique and distinct pastel background color.
+        //     * The child nodes **MUST use the exact same background color** as their parent primary branch.
 
-// 4.  **Formatting:** Each object in the array must be a simple, flat object with exactly three key-value pairs:
-//     * "id": A string that increments sequentially from "1" to "10".
-//     * "label": A string for the node's title.
-//     * "background": A string containing a 6-digit hex color code.
+        // 4.  **Formatting:** Each object in the array must be a simple, flat object with exactly three key-value pairs:
+        //     * "id": A string that increments sequentially from "1" to "10".
+        //     * "label": A string for the node's title.
+        //     * "background": A string containing a 6-digit hex color code.
 
-//     The required structure is: { "id": "...", "label": "...", "background": "..." }.
+        //     The required structure is: { "id": "...", "label": "...", "background": "..." }.
 
-// **Central Topic:** "${content}"`,
+        // **Central Topic:** "${content}"`,
         3: `Generate a concept map on the topic of "${content}" for my "Mind Weave" application. The output must be a single JSON object.
 
 Follow these rules precisely:
@@ -207,4 +207,31 @@ The third main sub-topic (item '4') and its six specific concepts must all share
     //         , content
     //     })
     // }
+}
+
+export const mapIntro = async (req, res) => {
+    const { content } = req.body;
+
+    const introPrompt = `You are MindWeave, an AI guide that introduces topics in an engaging way.  
+For the topic "${content}", generate a short introduction (4–6 sentences).  
+- Start with a clear overview of the topic.  
+- Mention its key aspects or subthemes in a structured but simple way (like a mini concept map in text).  
+- Conclude with an open-ended question or suggestion to explore further.  
+- Vary your phrasing each time so it doesn’t feel repetitive.  
+`;
+
+    try {
+        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+        const result = await model.generateContent(introPrompt);
+        const response = result.response
+        return res.json({
+            msg:"worked intro",
+            response
+        })
+    } catch (error) {
+        res.json({
+            msg: "error hai intro mai",
+            error
+        })
+    }
 }

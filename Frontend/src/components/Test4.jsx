@@ -6,10 +6,14 @@ import {
   applyNodeChanges,
   applyEdgeChanges,
   MarkerType,
+  Panel
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import dagre from "dagre";
 import { useSelector } from "react-redux";
+import ExportExcalidraw from "../features/ExportExcalidraw";
+import ExportMenu from "../features/ExportMenu";
+
 
 const nodeWidth = 200;
 const nodeHeight = 56;
@@ -132,7 +136,7 @@ export default function Test4Redux() {
 
   return (
     <div style={{ width: "100%", height: "100%" }}>
-      <ReactFlow
+      <ReactFlow id="reactflow-wrapper"
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
@@ -147,6 +151,10 @@ export default function Test4Redux() {
         <Controls position="bottom-right" />
         <Background />
       </ReactFlow>
+        <Panel position="bottom-center">
+          <ExportExcalidraw nodes={nodes} edges={edges} />
+        </Panel>
+      <ExportMenu />
     </div>
   );
 }
