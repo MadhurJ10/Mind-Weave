@@ -235,3 +235,13 @@ For the topic "${content}", generate a short introduction (4–6 sentences).
         })
     }
 }
+
+export const mapSave = async (req , res) => {
+    const {title , data} = req.body
+    const { userId } = req
+
+    res.json({
+        msg:'working',
+        userId
+    })
+}

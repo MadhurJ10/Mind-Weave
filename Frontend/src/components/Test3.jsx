@@ -140,8 +140,8 @@ export default function Test3() {
         <Background />
       </ReactFlow>
       <Panel position="bottom-center">
-          <ExportExcalidraw nodes={nodes} edges={edges} />
-        </Panel>
+        <ExportExcalidraw nodes={nodes} edges={edges} />
+      </Panel>
       <ExportMenu />
     </div>
   );
