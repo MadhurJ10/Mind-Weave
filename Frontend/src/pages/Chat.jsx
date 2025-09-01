@@ -19,7 +19,7 @@ const Chat = () => {
   return (
     <div className='flex w-full min-h-screen'>
       <div className='flex-shrink-0  text-white bg-[#121212] border-r border-[#9B170B] border-dashed'>
-        {IsSideBarOpen && <SideBar toggleButton={toggleButton} IsOpen={IsSideBarOpen} />}
+        {IsSideBarOpen && <SideBar toggleButton={toggleButton} IsOpen={IsSideBarOpen} setIsDepth={setIsDepth} setIsMapBarOpen={setIsMapBarOpen}/>}
         {!IsSideBarOpen && <button className='p-2' onClick={toggleButton}>open</button>}
       </div>
       <div className='flex flex-1 relative'>

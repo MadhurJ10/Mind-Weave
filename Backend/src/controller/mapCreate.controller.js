@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import prisma from '../lib/prisma.js';
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -225,7 +226,7 @@ For the topic "${content}", generate a short introduction (4–6 sentences).
         const result = await model.generateContent(introPrompt);
         const response = result.response
         return res.json({
-            msg:"worked intro",
+            msg: "worked intro",
             response
         })
     } catch (error) {
@@ -236,12 +237,50 @@ For the topic "${content}", generate a short introduction (4–6 sentences).
     }
 }
 
-export const mapSave = async (req , res) => {
-    const {title , data} = req.body
+export const mapSave = async (req, res) => { //Map Save endpoint (api)
+    const { title, data, depth } = req.body
+    const { userId, user } = req
+
+    try {
+        const save = await prisma.map.create({
+            data: {
+
+                userId,
+                title,
+                data,
+                depth
+            }
+        })
+        return res.json({
+            msg: 'working',
+            save,
+            user
+        })
+    } catch (error) {
+        return res.json({
+            msg: "not saving",
+            error
+        })
+    }
+
+
+}
+
+export const mapGet = async (req ,res) => {
     const { userId } = req
 
-    res.json({
-        msg:'working',
-        userId
-    })
+    try {
+        const getMap = await prisma.map.findMany({
+            where: {userId:userId}
+        })
+        return res.json({
+            msg:"here is your map",
+            getMap
+        })
+    } catch (error) {
+        return res.json({
+            msg: "not getting map",
+            error
+        }) 
+    }
 }
