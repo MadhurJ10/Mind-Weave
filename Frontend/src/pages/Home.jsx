@@ -5,6 +5,9 @@ import img from '../assets/img.png'
 import imggg from '../assets/imggg.png'
 import ReviewCard from '../components/ReviewCard'
 import { Link } from 'react-router-dom'
+import ClientsSection from '../components/ClientsSection'
+
+
 
 
 const review = {
@@ -72,7 +75,8 @@ const review = {
 const Home = () => {
   return (
     <div className='min-h-full flex flex-col bg-black'>
-      <div className='Herosection bg-black text-white flex flex-col items-center h-lvh text-center justify-center '>
+      <div className='Herosection bg-black text-white flex flex-col items-center h-lvh text-center justify-center mt-6'>
+      <ClientsSection/>
         <div className='flex flex-col gap-[1.5rem]'>
           <h1 className='text-6xl font-dm '>From scattered thoughts to structured clarity <br /> - that's MindWeave</h1>
           <p className='text-[#8B8B8B] font-bold'>Turn your messy brainstorms into organized, meaningful maps - MindWeave <br /> makes thinking, connecting, and learning beautifully simple.</p>
@@ -95,9 +99,9 @@ const Home = () => {
       </div>
       <div className='flex  flex-col justify-center bg-black text-white'>
         {/* <h1 className='text-4xl'>From Chaos to Clarity</h1> */}
-        <div className="flex flex-row bg-black text-white py-16 px-6">
+        <div className="flex flex-row bg-black text-white py-16 px-6 gap-[20rem]">
           {/* Left Column - Text */}
-          <div className="flex-1 flex flex-col justify-center max-w-xl">
+          <div className="flex-1 flex flex-col justify-center ">
             <h2 className="text-4xl lg:text-5xl font-bold mb-8 leading-tight">
               From Chaos to <span className="text-red-500 font-instrumentitalic">Clarity</span>
             </h2>
@@ -171,7 +175,6 @@ const Home = () => {
         {/* Footer overlay */}
 
       </div>
-
 
 
 
