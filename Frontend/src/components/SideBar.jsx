@@ -34,6 +34,12 @@ const SideBar = ({ toggleButton, IsOpen, setIsDepth, setIsMapBarOpen }) => {
     setIsMapBarOpen(true);
   }
 
+  async function deleteMap(item) {
+    const deleteMapp = await ApiClient.post('map/delete', {
+      id: item.id
+    })
+  }
+
   return (
     <div>
       <div
@@ -62,14 +68,21 @@ const SideBar = ({ toggleButton, IsOpen, setIsDepth, setIsMapBarOpen }) => {
               <div
                 key={item.id}
                 onClick={() => submitt(item)}
-                className="p-2 rounded-md bg-zinc-900/60 hover:bg-zinc-800 cursor-pointer"
+                className="p-2 rounded-md bg-zinc-900/60 hover:bg-zinc-800 cursor-pointer flex justify-between"
               >
                 {item.title} {/* show title, or item.data.obj if you prefer */}
+                <button className="cursor-pointer px-2 py-1 rounded-md 
+             text-gray-400 hover:text-red-500 
+             hover:bg-red-500/10 transition" onClick={(e) => {
+                    e.stopPropagation();  // prevent parent click
+                    deleteMap(item);
+                  }}><i className="ri-delete-bin-7-line"></i></button>
               </div>
             ))
           ) : (
             <p className="text-sm text-gray-400">No chats found</p>
           )}
+          {/* <div>hehee</div> */}
         </div>
 
         {/* Footer */}

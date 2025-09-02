@@ -162,15 +162,15 @@ const Home = () => {
       </div>
 
       <div className="h-screen bg-black flex items-center justify-center flex-col relative">
-  {/* Glowing orb */}
-  <div className="w-[500px] h-[500px] rounded-full 
+        {/* Glowing orb */}
+        <div className="w-[500px] h-[500px] rounded-full 
                   bg-[radial-gradient(circle,rgba(255,0,0,0.7)_0%,rgba(139,0,0,0.7)_25%,rgba(75,0,130,0.7)_50%,rgba(0,0,139,0.7)_75%,rgba(0,0,0,0.7)_100%)] 
                   opacity-90 blur-3xl">
-  </div>
+        </div>
 
-  {/* Footer overlay */}
-  
-</div>
+        {/* Footer overlay */}
+
+      </div>
 
 
 
