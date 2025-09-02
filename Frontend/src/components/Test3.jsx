@@ -13,6 +13,7 @@ import dagre from "dagre";
 import { useSelector } from "react-redux";
 import ExportMenu from "../features/ExportMenu";
 import ExportExcalidraw from "../features/ExportExcalidraw";
+import MapSavebutton from "./MapSavebutton";
 
 
 
@@ -71,10 +72,11 @@ function layoutLR(nodes, edges) {
   });
 }
 
-export default function Test3() {
+export default function Test3({IsDepth}) {
   const conceptMapData = useSelector((state) => state.conceptMap.data);
   const latestData = useSelector((state) => state.conceptMap.latest);
   console.log("Redux Data:", conceptMapData);
+  
 
   // ✅ Get latest entry safely
   const latestEntry =
@@ -143,6 +145,7 @@ export default function Test3() {
         <ExportExcalidraw nodes={nodes} edges={edges} />
       </Panel>
       <ExportMenu />
+      <MapSavebutton data={latestEntry} depth={IsDepth}/>
       {/* <button>hehe</button> */}
     </div>
   );

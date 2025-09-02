@@ -22,8 +22,8 @@ const MapBar = ({ onClose, setIsDepth, IsDepth }) => {
       {/* Map Container */}
       <div className="p-4 flex-1">
         <div className="h-[25rem] w-full rounded-lg border border-zinc-800 bg-zinc-950 flex items-center justify-center">
-          {IsDepth == 3 && <Test3 />}
-          {IsDepth == 4 && <Test4 />}
+          {IsDepth == 3 && <Test3 IsDepth={IsDepth}/>}
+          {IsDepth == 4 && <Test4 IsDepth={IsDepth}/>}
           {/* {IsDepth == 5 && <Test5 />} */}
         </div>
         {/* <button>ehhe</button> */}

@@ -13,6 +13,8 @@ import dagre from "dagre";
 import { useSelector } from "react-redux";
 import ExportExcalidraw from "../features/ExportExcalidraw";
 import ExportMenu from "../features/ExportMenu";
+import MapSavebutton from "./MapSavebutton";
+
 
 
 const nodeWidth = 200;
@@ -81,7 +83,7 @@ function layoutLR(nodes, edges) {
   });
 }
 
-export default function Test4Redux() {
+export default function Test4Redux({IsDepth}) {
   const conceptMapData = useSelector((state) => state.conceptMap.latest);
   console.log("Redux Data:", conceptMapData);
 
@@ -155,6 +157,7 @@ export default function Test4Redux() {
           <ExportExcalidraw nodes={nodes} edges={edges} />
         </Panel>
       <ExportMenu />
+      <MapSavebutton data={latestEntry} depth={IsDepth}/>
     </div>
   );
 }

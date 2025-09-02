@@ -257,6 +257,7 @@ export const mapSave = async (req, res) => { //Map Save endpoint (api)
             user
         })
     } catch (error) {
+        console.log(error)
         return res.json({
             msg: "not saving",
             error
@@ -266,21 +267,41 @@ export const mapSave = async (req, res) => { //Map Save endpoint (api)
 
 }
 
-export const mapGet = async (req ,res) => {
+export const mapGet = async (req, res) => {
     const { userId } = req
 
     try {
         const getMap = await prisma.map.findMany({
-            where: {userId:userId}
+            where: { userId: userId }
         })
+        const getdata = getMap.data
         return res.json({
-            msg:"here is your map",
+            msg: "here is your map",
+            // getdata
             getMap
         })
     } catch (error) {
         return res.json({
             msg: "not getting map",
             error
-        }) 
+        })
+    }
+}
+
+export const mapDelete = async (req, res) => {
+    const { id } = req.body
+    const { userId } = req
+
+    try {
+        const delMap = await prisma.map.delete({
+            where: { id: id }
+        })
+
+        return res.json({
+            msg:"deleted",
+            delMap
+        })
+    } catch (error) {
+
     }
 }

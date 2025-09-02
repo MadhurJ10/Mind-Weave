@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addData, setLatest } from "../features/conceptMapSlice";
 
 
-const SideBar = ({ toggleButton, IsOpen, setIsDepth , setIsMapBarOpen}) => {
+const SideBar = ({ toggleButton, IsOpen, setIsDepth, setIsMapBarOpen }) => {
   const [ history, setHistory ] = useState([]);
   const dispatch = useDispatch();
   const conceptMapData = useSelector((state) => state.conceptMap.data);
@@ -25,10 +25,12 @@ const SideBar = ({ toggleButton, IsOpen, setIsDepth , setIsMapBarOpen}) => {
   }, []);
 
   function submitt(item) {
-    console.log(item.data.obj)
-    setIsDepth(3);
-    dispatch(addData(item.data.obj));
-    dispatch(setLatest(item.data.obj));
+    console.log(`id = ${item.id}`)
+    console.log(item.data)
+    const snenene = item.data.data
+    setIsDepth(item.depth);
+    dispatch(addData(snenene));
+    dispatch(setLatest(snenene));
     setIsMapBarOpen(true);
   }
 
