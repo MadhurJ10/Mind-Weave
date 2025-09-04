@@ -4,6 +4,6 @@ import { askAi } from '../controller/askAi.controller.js';
 
 const router = express.Router()
 
-router.post('/askai/:word' , authMid , askAi)
+router.post('/askai' , authMid , askAi)
 
 export default router;

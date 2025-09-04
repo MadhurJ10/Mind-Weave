@@ -32,7 +32,7 @@ const NavBar = () => {
         <button className="hover:text-gray-300">Services</button>
         <button className="hover:text-gray-300">Process</button>
         <button className="hover:text-gray-300">Pages</button> */}
-      <button className="bg-red-500 px-4 py-2 rounded-lg font-semibold text-sm hover:bg-red-600 transition-colors duration-300 shadow-2xl shadow-[#b7a6a4]">
+      <button className="bg-[#FF4533] px-4 py-2 rounded-lg font-semibold text-sm hover:bg-[#FF2410] transition-colors duration-300 ">
         Start Mapping
       </button>
     </div>

@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { addData, setLatest } from "../features/conceptMapSlice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import ApiClient from "../services/ApiClient";
+import { ChatContext } from '../context/ChatProvider'
+
 
 
 const MessageInput = ({ setIsMapBarOpen, setIsDepth }) => {
+    const { messages, setMessages } = useContext(ChatContext);
     const { register, handleSubmit, reset } = useForm();
     const dispatch = useDispatch();
     const conceptMapData = useSelector((state) => state.conceptMap.data);
@@ -18,7 +21,14 @@ const MessageInput = ({ setIsMapBarOpen, setIsDepth }) => {
     }
 
     const onSubmit = async (data) => {
+        setMessages((prev) => [ ...prev, { sender: "user", text: data.text } ]);
         try {
+            const responseIntro = await ApiClient.post('map/intro', {
+                content: data.text
+            })
+            console.log(responseIntro.data.text)
+            setMessages((prev) => [ ...prev, { sender: "bot", text: responseIntro.data.text } ]);
+
             const response = await ApiClient.post(
                 "map/create",
                 {

@@ -81,7 +81,7 @@ const Home = () => {
           <h1 className='text-6xl font-dm '>From scattered thoughts to structured clarity <br /> - that's MindWeave</h1>
           <p className='text-[#8B8B8B] font-bold'>Turn your messy brainstorms into organized, meaningful maps - MindWeave <br /> makes thinking, connecting, and learning beautifully simple.</p>
           {/* <button className='self-center bg-[#FF4533] px-6 py-3 font-medium border border-[#9B170B] border-dashed rounded-lg hover:bg-[#FF2410]'>Start Mapping</button> */}
-          <Link className='self-center bg-[#FF4533] px-6 py-3 font-medium border border-[#9B170B] border-dashed rounded-lg hover:bg-[#FF2410]' to="/chat">Start Mapping</Link>
+          <Link className='self-center bg-[#FF4533] px-6 py-3 font-medium border border-[#9B170B] border-dashed rounded-lg hover:bg-[#FF2410] transition-colors duration-300' to="/chat">Start Mapping</Link>
         </div>
       </div>
       <div className='cards flex flex-col bg-black gap-[2rem]'>

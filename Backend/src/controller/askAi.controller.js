@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 export const askAi = async (req, res) => {
-    const word = req.params.word;
+    const {word} = req.body
     const prompt = `You are an assistant explaining concepts in a concept map. 
 The concept is "${word}".  
 Follow these rules:  
@@ -22,10 +22,11 @@ Now explain the concept "${word}".`;
 
         // Extract just the text response
         const outputText = result.response.text();
+        console.log(outputText);
 
         return res.status(200).json({
             msg: "AI response generated successfully",
-            response: outputText
+            text: outputText
         });
     } catch (error) {
         console.error("Error generating AI response:", error);

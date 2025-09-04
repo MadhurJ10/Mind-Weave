@@ -213,12 +213,11 @@ The third main sub-topic (item '4') and its six specific concepts must all share
 export const mapIntro = async (req, res) => {
     const { content } = req.body;
 
-    const introPrompt = `You are MindWeave, an AI guide that introduces topics in an engaging way.  
-For the topic "${content}", generate a short introduction (4–6 sentences).  
-- Start with a clear overview of the topic.  
-- Mention its key aspects or subthemes in a structured but simple way (like a mini concept map in text).  
-- Conclude with an open-ended question or suggestion to explore further.  
-- Vary your phrasing each time so it doesn’t feel repetitive.  
+    const introPrompt = `You are MindWeave, an AI guide. Write a short, engaging introduction (3–4 sentences) about the topic: "${content}".  
+- Start with a simple overview in plain language.  
+- Mention 2–3 key subtopics or aspects in a clear, list-like style.  
+- End with a curious question or suggestion to explore further.  
+Keep it concise and direct, no extra formatting.  
 `;
 
     try {
@@ -227,7 +226,7 @@ For the topic "${content}", generate a short introduction (4–6 sentences).
         const response = result.response
         return res.json({
             msg: "worked intro",
-            response
+            text: response.candidates[ 0 ].content.parts[ 0 ].text
         })
     } catch (error) {
         res.json({

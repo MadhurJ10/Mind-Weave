@@ -4,11 +4,15 @@ import App from './App.jsx'
 import { BrowserRouter } from "react-router-dom";
 import { store } from './app/store.js'
 import { Provider } from 'react-redux';
+import ChatProvider from './context/ChatProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ChatProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ChatProvider>
+
   </Provider>
 )

@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Test3 from './Test3'
 import Test4 from './Test4'
 import Test5 from './Test5'
+// import {} from 'module'
+import {ChatContext} from '../context/ChatProvider'
+
 
 const MapBar = ({ onClose, setIsDepth, IsDepth }) => {
+  const {messages} = useContext(ChatContext);
+  console.log(messages)
   return (
     <div className="w-[40rem] h-full bg-gradient-to-b from-black via-[#111] to-[#1a1a1a] 
                     border-l border-red-600/40 shadow-xl flex flex-col text-gray-200">
