@@ -6,6 +6,8 @@ import imggg from '../assets/imggg.png'
 import ReviewCard from '../components/ReviewCard'
 import { Link } from 'react-router-dom'
 import ClientsSection from '../components/ClientsSection'
+import Footer from '../components/Footer'
+
 
 
 
@@ -97,11 +99,9 @@ const Home = () => {
 
 
       </div>
-      <div className='flex  flex-col justify-center bg-black text-white'>
-        {/* <h1 className='text-4xl'>From Chaos to Clarity</h1> */}
-        <div className="flex flex-row bg-black text-white py-16 px-6 gap-[20rem]">
-          {/* Left Column - Text */}
-          <div className="flex-1 flex flex-col justify-center ">
+      <div className='flex flex-col justify-center bg-black text-white'>
+        <div className="mx-auto max-w-7xl py-16 px-6 sm:py-24 lg:px-8 flex flex-col md:flex-row gap-12 md:gap-16 items-center">
+          <div className="md:w-1/2 text-center md:text-left">
             <h2 className="text-4xl lg:text-5xl font-bold mb-8 leading-tight">
               From Chaos to <span className="text-red-500 font-instrumentitalic">Clarity</span>
             </h2>
@@ -109,34 +109,36 @@ const Home = () => {
               Ideas are scattered, disconnected, and hard to structure with traditional tools.
             </p>
             <p className="text-base lg:text-lg text-gray-300">
-              MindWeave organizes your thoughts visually—helping you connect, simplify,
-              and see the bigger picture.
+              MindWeave organizes your thoughts visually—helping you connect, simplify, and see the bigger picture.
             </p>
           </div>
+          <div className="md:w-1/2 flex justify-center">
 
-          {/* Right Column - Visual */}
-          <div className="flex-1 flex justify-center items-center">
-            <img className="w-[20rem] lg:w-[30rem] h-[20rem] lg:h-[30rem]" src={imggg} alt="" />
+            <img className="w-full max-w-md h-auto" src={imggg} alt="Visual representation of organized thoughts" />
           </div>
+
         </div>
-
-
       </div>
-        <div className='bg-[#111111] rounded-lg border border-[#252525] font-medium self-center px-5 py-1.5  text-white'>How It Works </div>
+      <div className='bg-[#111111] rounded-lg border border-[#252525] font-medium self-center px-5 py-1.5  text-white'>How It Works </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-[6rem]">
-        
+
 
         {/* Card 1 */}
-        <div className="flex flex-col justify-center rounded-2xl h-[15rem] bg-[linear-gradient(45deg,hsl(0_0%_5%)_61%,hsl(17_18%_8%)_79%,hsl(17_24%_10%)_85%,hsl(16_29%_12%)_88%,hsl(16_33%_14%)_91%,hsl(16_36%_16%)_92%,hsl(16_39%_18%)_93%,hsl(16_41%_20%)_94%,hsl(16_43%_23%)_95%,hsl(16_44%_25%)_95%,hsl(16_45%_27%)_96%,hsl(16_47%_29%)_96%,hsl(16_48%_32%)_97%,hsl(16_49%_34%)_97%,hsl(16_49%_36%)_98%,hsl(16_50%_39%)_98%,hsl(16_51%_41%)_99%,hsl(16_51%_43%)_99%,hsl(16_52%_46%)_100%)] p-8 text-center shadow-lg">
+        <div className="flex flex-col justify-center rounded-2xl h-[15rem] p-8 text-center shadow-lg 
+    bg-[radial-gradient(circle_600px_at_top_left,rgba(30,90,200,0.25),transparent_40%),radial-gradient(circle_600px_at_bottom_right,rgba(30,90,200,0.15),transparent_50%)] 
+    border border-[#252525]">
           <h3 className="text-3xl font-bold text-white mb-3">Enter Your Idea</h3>
           <p className="text-[#8B8B8B] text-[1rem]">
             Start with a single topic or concept. Just type it in and let the system do the rest.
           </p>
         </div>
 
+
         {/* Card 2 */}
-        <div className="flex flex-col justify-center rounded-2xl bg-[linear-gradient(315deg,hsl(0_0%_5%)_11%,hsl(214_21%_11%)_57%,hsl(212_32%_15%)_74%,hsl(211_40%_20%)_84%,hsl(210_47%_25%)_91%,hsl(208_53%_30%)_96%,hsl(207_59%_34%)_100%,hsl(206_66%_38%)_101%,hsl(205_74%_42%)_100%)] p-8 text-center shadow-lg">
+        <div className="flex flex-col justify-center rounded-2xl h-[15rem] p-8 text-center shadow-lg 
+    bg-[radial-gradient(circle_600px_at_top_right,rgba(165,79,46,0.3),transparent_40%),radial-gradient(circle_600px_at_bottom_left,rgba(165,79,46,0.15),transparent_50%)] 
+    border border-[#252525]">
           <h3 className="text-3xl font-bold text-white mb-3">AI Expands Connections</h3>
           <p className="text-[#8B8B8B] text-[1rem]">
             MindWeave instantly generates related concepts and shows how they connect.
@@ -144,7 +146,7 @@ const Home = () => {
         </div>
 
         {/* Card 3 */}
-        <div className="flex flex-col justify-center rounded-2xl h-[15rem] bg-[linear-gradient(45deg,hsl(11_52%_43%)_0%,hsl(11_45%_41%)_0%,hsl(11_40%_39%)_0%,hsl(11_34%_37%)_0%,hsl(11_29%_35%)_0%,hsl(11_25%_32%)_1%,hsl(11_21%_29%)_2%,hsl(11_17%_26%)_3%,hsl(11_13%_22%)_4%,hsl(11_9%_18%)_7%,hsl(11_6%_14%)_10%,hsl(11_3%_10%)_15%,hsl(0_0%_5%)_50%,hsl(206_4%_11%)_85%,hsl(206_8%_16%)_90%,hsl(206_12%_20%)_93%,hsl(206_17%_25%)_96%,hsl(206_22%_28%)_97%,hsl(206_27%_32%)_98%,hsl(206_34%_35%)_99%,hsl(206_40%_37%)_100%,hsl(206_48%_40%)_100%,hsl(206_56%_41%)_100%,hsl(206_65%_42%)_100%,hsl(206_76%_43%)_100%)] md:col-span-2 p-8 text-center shadow-lg">
+        <div className="flex flex-col justify-center rounded-2xl h-[15rem] bg-[radial-gradient(circle_600px_at_top_right,rgba(0,100,255,0.25),transparent_40%),radial-gradient(circle_600px_at_bottom_left,rgba(255,50,0,0.25),transparent_40%)] md:col-span-2 p-8 text-center shadow-lg border border-[#252525]">
           <h3 className="text-3xl font-bold text-white mb-3">Explore & Share</h3>
           <p className="text-[#8B8B8B] text-[1rem]">
             Refine your map, zoom in on details, and share or export it with your team.
@@ -176,6 +178,7 @@ const Home = () => {
         </div>
 
         {/* Footer overlay */}
+        <Footer className="absolute bottom-0 left-0 right-0" />
 
       </div>
 
