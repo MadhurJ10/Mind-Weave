@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import ApiClient from "../services/ApiClient";
 import { useDispatch, useSelector } from "react-redux";
 import { addData, setLatest } from "../features/conceptMapSlice";
-
+import { BsLayoutSidebar } from "react-icons/bs";
 
 const SideBar = ({ toggleButton, IsOpen, setIsDepth, setIsMapBarOpen }) => {
-  const [ history, setHistory ] = useState([]);
+  const [history, setHistory] = useState([]);
   const dispatch = useDispatch();
   const conceptMapData = useSelector((state) => state.conceptMap.data);
   const latestData = useSelector((state) => state.conceptMap.latest);
@@ -14,20 +14,16 @@ const SideBar = ({ toggleButton, IsOpen, setIsDepth, setIsMapBarOpen }) => {
     const fetchHistory = async () => {
       try {
         const res = await ApiClient.post("map/get");
-        console.log(res.data); // check API response
-        setHistory(res.data.getMap || []); // store in state
+        setHistory(res.data.getMap || []);
       } catch (err) {
         console.error("Error fetching history:", err);
       }
     };
-
     fetchHistory();
   }, []);
 
   function submitt(item) {
-    console.log(`id = ${item.id}`)
-    console.log(item.data)
-    const snenene = item.data.data
+    const snenene = item.data.data;
     setIsDepth(item.depth);
     dispatch(addData(snenene));
     dispatch(setLatest(snenene));
@@ -35,62 +31,71 @@ const SideBar = ({ toggleButton, IsOpen, setIsDepth, setIsMapBarOpen }) => {
   }
 
   async function deleteMap(item) {
-    const deleteMapp = await ApiClient.post('map/delete', {
-      id: item.id
-    })
+    try {
+      await ApiClient.post("map/delete", { id: item.id });
+      setHistory((prev) => prev.filter((h) => h.id !== item.id)); // instantly update UI
+    } catch (err) {
+      console.error("Error deleting map:", err);
+    }
   }
 
   return (
-    <div>
-      <div
-        className="sidebar w-[12rem] h-screen 
-                      bg-gradient-to-b from-black via-[#111] to-[#1a1a1a] 
-                      flex flex-col text-gray-200 border-r border-red-600/40 shadow-lg"
-      >
-        {/* Close Button */}
+    <div
+      className="sidebar w-[11rem] h-screen 
+                 bg-gradient-to-b from-black via-[#111] to-[#1a1a1a] 
+                 flex flex-col text-gray-200 border-r border-red-600/30"
+    >
+      {/* Top Bar */}
+      <div className="flex items-center justify-between px-3 py-2 border-b border-zinc-800">
+        <h1 className="text-sm font-medium tracking-wide text-gray-300">
+          Chats
+        </h1>
         <button
           onClick={toggleButton}
-          className="self-end m-2 px-3 py-1 text-sm rounded-md 
-                     bg-red-600 hover:bg-red-700 transition text-white"
+          className="p-1 rounded-md hover:bg-zinc-800 transition"
         >
-          Close
+          <BsLayoutSidebar className="text-red-500 text-lg" />
         </button>
+      </div>
 
-        {/* Header */}
-        <div className="w-full h-[3rem] bg-red-600 flex items-center justify-center shadow-md">
-          <h1 className="text-lg font-semibold tracking-wide">Chats</h1>
-        </div>
-
-        {/* Body */}
-        <div className="flex-1 p-3 space-y-2 overflow-y-auto">
-          {history.length > 0 ? (
-            history.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => submitt(item)}
-                className="p-2 rounded-md bg-zinc-900/60 hover:bg-zinc-800 cursor-pointer flex justify-between"
+      {/* Body */}
+      <div className="flex-1 p-2 space-y-2 overflow-y-auto text-sm custom-scrollbar">
+        {history.length > 0 ? (
+          history.map((item) => (
+            <div
+              key={item.id}
+              onClick={() => submitt(item)}
+              className="p-2 rounded-md bg-zinc-900/60 hover:bg-zinc-800 cursor-pointer 
+                         flex items-center justify-between transition"
+            >
+              <span className="truncate">{item.title}</span>
+              <button
+                className="p-1 rounded-md text-gray-400 
+                           hover:text-red-500 hover:bg-red-500/10 transition"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  deleteMap(item);
+                }}
               >
-                {item.title} {/* show title, or item.data.obj if you prefer */}
-                <button className="cursor-pointer px-2 py-1 rounded-md 
-             text-gray-400 hover:text-red-500 
-             hover:bg-red-500/10 transition" onClick={(e) => {
-                    e.stopPropagation();  // prevent parent click
-                    deleteMap(item);
-                  }}><i className="ri-delete-bin-7-line"></i></button>
-              </div>
-            ))
-          ) : (
-            <p className="text-sm text-gray-400">No chats found</p>
-          )}
-          {/* <div>hehee</div> */}
-        </div>
+                <i className="ri-delete-bin-7-line text-sm"></i>
+              </button>
+            </div>
+          ))
+        ) : (
+          <p className="text-xs text-gray-500 text-center mt-4">
+            No chats found
+          </p>
+        )}
+      </div>
 
-        {/* Footer */}
-        <div className="fixed bottom-0 w-[12rem] border-t border-zinc-800">
-          <h1 className="text-center py-3 bg-red-600 hover:bg-red-700 text-white cursor-pointer">
-            Login
-          </h1>
-        </div>
+      {/* Footer */}
+      <div className="border-t border-zinc-800">
+        <h1
+          className="text-center py-2 text-sm bg-red-600 hover:bg-red-700 
+                     text-white cursor-pointer transition"
+        >
+          Login
+        </h1>
       </div>
     </div>
   );

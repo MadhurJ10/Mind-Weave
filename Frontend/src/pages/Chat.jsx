@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import SideBar from '../components/SideBar'
 import ChatArea from '../components/ChatArea';
 import MapBar from '../components/MapBar';
+import { BsLayoutSidebar } from "react-icons/bs";
+
 
 const Chat = () => {
   const [ IsSideBarOpen, setIsSideBarOpen ] = React.useState(true);
@@ -20,7 +22,7 @@ const Chat = () => {
     <div className='flex w-full min-h-screen'>
       <div className='flex-shrink-0  text-white bg-[#121212] border-r border-[#9B170B] border-dashed'>
         {IsSideBarOpen && <SideBar toggleButton={toggleButton} IsOpen={IsSideBarOpen} setIsDepth={setIsDepth} setIsMapBarOpen={setIsMapBarOpen}/>}
-        {!IsSideBarOpen && <button className='p-2' onClick={toggleButton}>open</button>}
+        {!IsSideBarOpen && <button className='p-2 mt-2 text-2xl' onClick={toggleButton}><BsLayoutSidebar/></button>}
       </div>
       <div className='flex flex-1 relative'>
         <ChatArea IsSideBarOpen={IsSideBarOpen} IsMapBarOpen={IsMapBarOpen} setIsMapBarOpen={setIsMapBarOpen} setIsDepth={setIsDepth} />

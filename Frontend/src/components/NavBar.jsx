@@ -1,13 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
   return (
-    <div className="flex fixed left-1/2 transform -translate-x-1/2 
-                    justify-between items-center gap-6
-                    w-[20rem] sm:w-[36rem] 
-                    bg-black/50 backdrop-blur-md text-white 
-                    px-6 py-3 top-6 z-50 
-                    rounded-xl border border-white/10 shadow-lg">
+    <div className="flex fixed left-1/2 transform -translate-x-1/2 justify-between items-center gap-6 w-[20rem] sm:w-[36rem] bg-black/80 text-white px-6 py-3 top-6 z-50 rounded-xl border border-white/10 shadow-lg">
 
       {/* Logo */}
       <div className="flex items-center gap-2">
@@ -27,14 +23,14 @@ const NavBar = () => {
 
       {/* Menu */}
       <div className="flex gap-3 text-sm font-medium">
-        <button className=" px-5 rounded-lg hover:bg-[#1A1A1A] transition-colors duration-300">Login</button>
+        <Link  to="login" className="flex justify-center items-center px-5 rounded-lg hover:bg-[#1A1A1A] transition-colors duration-300">Login</Link>
         {/* <button className="hover:text-gray-300">Blog</button>
         <button className="hover:text-gray-300">Services</button>
         <button className="hover:text-gray-300">Process</button>
         <button className="hover:text-gray-300">Pages</button> */}
-      <button className="bg-[#FF4533] px-4 py-2 rounded-lg font-semibold text-sm hover:bg-[#FF2410] transition-colors duration-300 ">
+      <Link to='/chat' className="bg-[#FF4533] px-4 py-2 rounded-lg font-semibold text-sm hover:bg-[#FF2410] transition-colors duration-300 ">
         Start Mapping
-      </button>
+      </Link>
     </div>
       </div>
 
