@@ -22,7 +22,7 @@ const App = () => {
       // setIsLoading(true);
       try {
         const user = await fetchUserDetails();
-        // console.log("Fetched User:", user);
+        console.log("Fetched User:", user);
         if (!user) {
           setIsUserValid(false);
         } else {

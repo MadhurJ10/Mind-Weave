@@ -1,8 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
+import { userContext } from "../context/UserProvider";
+
 
 const Login = () => {
+      const { isUserValid, setIsUserValid } = useContext(userContext);
+      console.log(isUserValid)
     const location = useLocation();
     const navigate = useNavigate();
 

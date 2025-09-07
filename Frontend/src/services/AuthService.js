@@ -1,7 +1,7 @@
 import ApiClient from './ApiClient';
 
 export const getToken = async () => {
-  return localStorage.getItem('token');
+  return localStorage.getItem('Token');
 };
 
 export const fetchUserDetails = async () => {
@@ -11,9 +11,9 @@ export const fetchUserDetails = async () => {
   try {
     const response = await ApiClient.post(
       '/auth/getuser',
-      {}, // ✅ empty body since it's a POST
+       // ✅ empty body since it's a POST
       {
-        headers: { Authorization: `Bearer ${token}` }, // ✅ correct header format
+        headers: { Authorization: `${token}` }, // ✅ correct header format
       }
     );
     return response.data; // ✅ return only the data
