@@ -81,3 +81,30 @@ export const googleCallback = (req, res, next) => {
         // })
     })(req, res, next);
 };
+
+
+// module.exports.getUser = async (req, res) => {
+//     try {
+//         const { userId } = req
+//         const userDeatils = await userModel.findById(userId).select("-password  -_id")
+//         res.status(200).json(userDeatils);
+//     } catch (error) {
+//         res.status(500).json({ message: 'Server error.' })
+//     }
+
+// }
+
+export const getUser = async (req ,res) => {
+    try {
+        const {userId} = req 
+        const userDeatils = await prisma.user.findUnique(
+            {where: {id:userId}}
+        )
+        return res.json({
+            msg:"user is there",
+            userDeatils
+        })
+    } catch (error) {
+        
+    }
+}
