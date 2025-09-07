@@ -21,6 +21,7 @@ const Login = () => {
   };
 
   useEffect(() => {
+      console.log("Full URL:", location.pathname + location.search);
     const query = new URLSearchParams(location.search);
     const token = query.get("token");
 
