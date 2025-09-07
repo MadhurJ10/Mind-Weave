@@ -89,7 +89,7 @@ const Home = () => {
       <div className='cards flex flex-col bg-black gap-[2rem]'>
         <div className='bg-[#111111] rounded-lg border border-[#252525] font-medium self-center px-5 py-1.5  text-white'>Features</div>
 
-        <div className='flex flex-col sm:flex-row '>
+        <div className='flex flex-col gap-[2rem] sm:flex-row sm:gap-0'>
           <Card title={'AI Map Creation'} heading={'Generate structured, connected maps instantly from just a single topic.'} icon={'ri-mind-map text-white text-8xl'} />
           <Card title={'Ask AI'} heading={'Get instant explanations or discover hidden connections between nodes.'} icon={'ri-chat-ai-fill text-white text-8xl'} />
           <Card title={'Export & Share'} heading={'Download as PNG or PDF, or import into other tools for seamless use.'} icon={'ri-share-2-line text-white text-8xl'} />
@@ -121,7 +121,7 @@ const Home = () => {
       </div>
       <div className='bg-[#111111] rounded-lg border border-[#252525] font-medium self-center px-5 py-1.5  text-white'>How It Works </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-[6rem]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-[2rem] sm:p-[6rem]">
 
 
         {/* Card 1 */}
@@ -172,7 +172,7 @@ const Home = () => {
 
       <div className="h-screen bg-black flex items-center justify-center flex-col relative">
         {/* Glowing orb */}
-        <div className="w-[500px] h-[500px] rounded-full 
+        <div className="w-[400px] h-[500px] rounded-full 
                   bg-[radial-gradient(circle,rgba(255,0,0,0.7)_0%,rgba(139,0,0,0.7)_25%,rgba(75,0,130,0.7)_50%,rgba(0,0,139,0.7)_75%,rgba(0,0,0,0.7)_100%)] 
                   opacity-90 blur-3xl">
         </div>

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Register = () => {
+    const baseUrl = import.meta.env.VITE_BASE_URL;
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -13,7 +14,7 @@ const Register = () => {
     } = useForm();
 
     const handleGoogleRegister = () => {
-        window.location.href = "http://localhost:3000/auth/google"; // backend OAuth route
+        window.location.href = `${baseUrl}/auth/google`; // backend OAuth route
     };
 
     useEffect(() => {
@@ -31,7 +32,7 @@ const Register = () => {
         try {
             // console.log("Register data:", data);
             // Example: Send register request to backend
-            const res = await fetch("http://localhost:3000/auth/register", {
+            const res = await fetch(`${baseUrl}/auth/register`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),

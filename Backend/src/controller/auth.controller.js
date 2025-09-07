@@ -70,11 +70,11 @@ export const googleInit = passport.authenticate('google', { scope: [ 'profile', 
 export const googleCallback = (req, res, next) => {
     passport.authenticate('google', { failureRedirect: '/login', session: false }, (err, user) => {
         if (err || !user) {
-            return res.redirect('http://localhost:5173/auth/login?error=auth_failed');
+            return res.redirect('https://mindweave-theta.vercel.app/auth/login?error=auth_failed');
         }
 
         const token = generateToken(user.id);
-        res.redirect(`http://localhost:5173/login?token=${token}`);
+        res.redirect(`https://mindweave-theta.vercel.app/login?token=${token}`);
         // res.json({
         //     msg:"auth success full",
         //     token
