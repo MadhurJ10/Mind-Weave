@@ -41,7 +41,7 @@ const App = () => {
     fetchUser();
   }, [ setIsUserValid ]);
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col w-fit">
 
       <Routes>
         <Route path="/" element={

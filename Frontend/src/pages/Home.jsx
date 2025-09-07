@@ -89,7 +89,7 @@ const Home = () => {
       <div className='cards flex flex-col bg-black gap-[2rem]'>
         <div className='bg-[#111111] rounded-lg border border-[#252525] font-medium self-center px-5 py-1.5  text-white'>Features</div>
 
-        <div className='flex '>
+        <div className='flex flex-col sm:flex-row '>
           <Card title={'AI Map Creation'} heading={'Generate structured, connected maps instantly from just a single topic.'} icon={'ri-mind-map text-white text-8xl'} />
           <Card title={'Ask AI'} heading={'Get instant explanations or discover hidden connections between nodes.'} icon={'ri-chat-ai-fill text-white text-8xl'} />
           <Card title={'Export & Share'} heading={'Download as PNG or PDF, or import into other tools for seamless use.'} icon={'ri-share-2-line text-white text-8xl'} />
