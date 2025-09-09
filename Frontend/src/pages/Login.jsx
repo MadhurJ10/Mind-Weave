@@ -3,9 +3,8 @@ import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import { userContext } from "../context/UserProvider";
 
-
 const Login = () => {
-    const baseUrl = import.meta.env.VITE_BASE_URL;
+  const baseUrl = import.meta.env.VITE_BASE_URL;
   const { isUserValid, setIsUserValid } = useContext(userContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -16,21 +15,34 @@ const Login = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
+  // ✅ Handle Google Login
   const handleGoogleLogin = () => {
     window.location.href = `${baseUrl}/auth/google`;
   };
 
+  // ✅ Check token from query string (OAuth/Google redirect)
   useEffect(() => {
-      console.log("Full URL:", location.pathname + location.search);
+    console.log(location.search)
     const query = new URLSearchParams(location.search);
     const token = query.get("token");
 
     if (token) {
       localStorage.setItem("Token", token);
-      navigate("/");
+      setIsUserValid(true);
+      navigate("/", { replace: true }); // clean the URL
     }
-  }, [location, navigate]);
+  }, [location, navigate, setIsUserValid]);
 
+  // ✅ Auto login if token already exists in localStorage
+  useEffect(() => {
+    const storedToken = localStorage.getItem("Token");
+    if (storedToken) {
+      setIsUserValid(true);
+      navigate("/", { replace: true });
+    }
+  }, [navigate, setIsUserValid]);
+
+  // ✅ Manual email/password login
   const onSubmit = async (data) => {
     try {
       const res = await fetch(`${baseUrl}/auth/login`, {
@@ -42,6 +54,7 @@ const Login = () => {
       const result = await res.json();
       if (result.token) {
         localStorage.setItem("Token", result.token);
+        setIsUserValid(true);
         navigate("/");
       } else {
         alert(result.message || "Login failed");
@@ -54,16 +67,15 @@ const Login = () => {
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
       {/* Left Side */}
-   {/* Left Side */}
-<div className="md:w-1/2 h-[24rem] bg-black text-white flex flex-col justify-center items-center p-8 md:p-10 ">
-  <h1 className="text-3xl md:text-4xl font-bold mb-4 flex items-center gap-2 text-red-500">
-    MindWeave
-  </h1>
-  <p className="text-base md:text-lg text-gray-400 text-center max-w-md">
-    Welcome back, where ideas take shape. Keep exploring, keep creating,
-    and keep pushing forward until you weave the future you dream of.
-  </p>
-</div>
+      <div className="md:w-1/2 h-[24rem] bg-black text-white flex flex-col justify-center items-center p-8 md:p-10">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 flex items-center gap-2 text-red-500">
+          MindWeave
+        </h1>
+        <p className="text-base md:text-lg text-gray-400 text-center max-w-md">
+          Welcome back, where ideas take shape. Keep exploring, keep creating,
+          and keep pushing forward until you weave the future you dream of.
+        </p>
+      </div>
 
       {/* Right Side */}
       <div className="md:w-1/2 w-full bg-[#0f0f0f] flex flex-col justify-center items-center p-8 md:p-10">
