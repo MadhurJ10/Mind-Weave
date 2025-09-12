@@ -16,6 +16,7 @@ const ReviewCard = ({ review, name, img }) => {
         <img
           src={img}
           alt="profile"
+          loading="lazy"
           className="w-12 h-12 rounded-full object-cover border border-[#2f2f2f]"
         />
         <div>
@@ -29,4 +30,4 @@ const ReviewCard = ({ review, name, img }) => {
   );
 };
 
-export default ReviewCard;
+export default React.memo(ReviewCard);
