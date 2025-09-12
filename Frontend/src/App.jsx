@@ -1,16 +1,17 @@
 import React, { useContext, useEffect } from 'react';
 import { Routes, Route } from "react-router-dom";
-import NavBar from './components/NavBar';
-import Home from './pages/Home';
-import Chat from './pages/Chat';
-
-import Login from './pages/Login';
-import Register from './pages/Register';
-import { fetchUserDetails } from './services/AuthService';
 import { userContext } from './context/UserProvider'
+import { fetchUserDetails } from './services/AuthService';
+
 import ProtectedRoute from './pages/ProtectedRoute';
+// import Home from './pages/Home';
+import NavBar from './components/NavBar';
 
 
+const Home = React.lazy(() => import('./pages/Home'));
+const Login = React.lazy(() => import('./pages/Login'));
+const Chat = React.lazy(() => import('./pages/Chat'));
+const Register = React.lazy(() => import('./pages/Register'));
 
 
 

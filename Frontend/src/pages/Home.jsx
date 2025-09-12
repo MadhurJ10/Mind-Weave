@@ -1,14 +1,24 @@
 import React from 'react';
-import Card from '../components/Card';
-import imgg from '../assets/imgg.png';
-import imggg from '../assets/imggg.png';
-import ReviewCard from '../components/ReviewCard';
 import { Link } from 'react-router-dom';
-import ClientsSection from '../components/ClientsSection';
-import Footer from '../components/Footer';
-import HeroSection from './HeroSection';
-import HowItWorks from '../components/HowItWorks';
-import ReviewsGrid from '../components/ReviewsGrid';
+
+
+// import imggg from '../assets/imggg.png';
+// import ClientsSection from '../components/ClientsSection';
+// import Footer from '../components/Footer';
+// import HeroSection from './HeroSection';
+// import HowItWorks from '../components/HowItWorks';
+// import ReviewsGrid from '../components/ReviewsGrid';
+// import Card from '../components/Card';
+
+
+const imggg = React.lazy(() => import('../assets/imggg.png'));
+const ClientsSection = React.lazy(() => import('../components/ClientsSection'));
+const Footer = React.lazy(() => import('../components/Footer'));
+const HeroSection  = React.lazy(() => import('./HeroSection'));
+const HowItWorks = React.lazy(() => import('../components/HowItWorks'));
+const ReviewsGrid = React.lazy(() => import('../components/ReviewsGrid'));
+const Card = React.lazy(() => import('../components/Card'));
+
 
 const review = {
   "Mindweave_Reviews": [
@@ -55,14 +65,15 @@ const Home = () => {
 
       {/* Hero Section with gradient and overlay */}
       <div className="relative h-screen w-full">
-        <HeroSection className="absolute inset-0 z-0" /> {/* Gradient behind everything */}
+        <HeroSection className="absolute inset-0 z-0" />
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-10">
           <ClientsSection />
           <div className="flex flex-col gap-[1.5rem] mt-8">
-            <h1 className="text-6xl font-dm text-white">
-              Visualize,Connect, <br /> and  <span className='font-instrumentitalic'>Expand</span>  Your Mind.
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-dm text-white leading-snug">
+              Visualize, Connect, <br /> and <span className="font-instrumentitalic">Expand</span> Your Mind.
             </h1>
+
             <p className="text-[#8B8B8B] font-bold">
               Turn your messy brainstorms into organized, meaningful maps - MindWeave <br />
               makes thinking, connecting, and learning beautifully simple.
@@ -109,7 +120,7 @@ const Home = () => {
 
       {/* How It Works */}
       <div className='bg-[#111111] rounded-lg border border-[#252525] font-medium self-center px-5 py-1.5 text-white'>How It Works</div>
-      <HowItWorks/>
+      <HowItWorks />
 
       {/* Testimonials */}
       <div className="Testimonial flex flex-col justify-center bg-black py-16 px-6 md:px-12">
@@ -119,7 +130,7 @@ const Home = () => {
             There's a reason people <br /> are <span className='font-instrumentitalic'>raving</span> about us.
           </h1>
         </div>
-        <ReviewsGrid reviews={review.Mindweave_Reviews}/>
+        <ReviewsGrid reviews={review.Mindweave_Reviews} />
       </div>
 
       {/* Glowing Orb + Footer */}

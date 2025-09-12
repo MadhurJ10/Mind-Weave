@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import SideBar from '../components/SideBar'
-import ChatArea from '../components/ChatArea';
-import MapBar from '../components/MapBar';
 import { BsLayoutSidebar } from "react-icons/bs";
+
+
+const SideBar = React.lazy(() => import('../components/SideBar'));
+const ChatArea = React.lazy(() => import('../components/ChatArea'));
+const MapBar = React.lazy(() => import('../components/MapBar'));
 
 
 const Chat = () => {

@@ -2,7 +2,7 @@ import React from 'react';
 
 const HeroSection = () => {
   return (
-    <div className="relative h-screen  overflow-hidden bg-black  top-[20rem]">
+    <div className="relative h-screen   overflow-hidden bg-black  top-[20rem]">
       {/* Gradient Blobs */}
       <div className="absolute inset-0 z-0 ">
         {/* Top-center warm light */}
