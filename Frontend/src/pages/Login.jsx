@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { userContext } from "../context/UserProvider";
+
 
 const Login = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -173,9 +174,8 @@ const Login = () => {
           {/* Sign Up */}
           <p className="mt-6 text-gray-400 text-sm text-center">
             Don’t have an account?{" "}
-            <a href="/register" className="text-red-500 hover:underline">
-              Sign Up
-            </a>
+            <Link className="text-red-500 hover:underline" to="/register">Sign Up</Link>
+
           </p>
         </div>
       </div>

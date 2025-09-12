@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Register = () => {
     const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -143,9 +143,9 @@ const Register = () => {
                     {/* Already have an account */}
                     <p className="mt-6 text-gray-400 text-sm text-center">
                         Already have an account?{" "}
-                        <a href="/login" className="text-red-500 hover:underline">
+                        <Link to="/login" className="text-red-500 hover:underline">
                             Sign In
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>
