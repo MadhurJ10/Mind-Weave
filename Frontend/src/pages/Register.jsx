@@ -14,24 +14,20 @@ const Register = () => {
     } = useForm();
 
     const handleGoogleRegister = () => {
-        window.location.href = `${baseUrl}/auth/google`; // backend OAuth route
+        window.location.href = `${baseUrl}/auth/google`;
     };
 
     useEffect(() => {
-        // ✅ Same token handling as login
         const query = new URLSearchParams(location.search);
         const token = query.get("token");
-
         if (token) {
             localStorage.setItem("Token", token);
-            navigate("/"); // redirect after saving
+            navigate("/");
         }
-    }, [ location, navigate ]);
+    }, [location, navigate]);
 
     const onSubmit = async (data) => {
         try {
-            // console.log("Register data:", data);
-            // Example: Send register request to backend
             const res = await fetch(`${baseUrl}/auth/register`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -53,9 +49,9 @@ const Register = () => {
     return (
         <div className="min-h-screen flex flex-col md:flex-row">
             {/* Left Side - Form */}
-            <div className="w-full md:w-1/2 bg-[#0f0f0f] flex justify-center items-center p-6">
-                <div className="w-full max-w-md bg-black p-8 rounded-xl shadow-lg border border-red-500/20">
-                    <h2 className="text-2xl font-bold text-center text-white mb-6">
+            <div className="w-full md:w-1/2 flex-1 bg-[#0f0f0f] flex justify-center items-center p-6 md:p-10">
+                <div className="w-full max-w-md bg-black p-6 md:p-8 rounded-xl shadow-lg border border-red-500/20">
+                    <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-6">
                         Create Account
                     </h2>
 
@@ -115,7 +111,6 @@ const Register = () => {
                             )}
                         </div>
 
-                        {/* Sign Up Button */}
                         <button
                             type="submit"
                             disabled={isSubmitting}
@@ -140,7 +135,6 @@ const Register = () => {
                         <i className="ri-google-fill text-xl text-red-500"></i> Sign up with Google
                     </button>
 
-                    {/* Already have an account */}
                     <p className="mt-6 text-gray-400 text-sm text-center">
                         Already have an account?{" "}
                         <Link to="/login" className="text-red-500 hover:underline">
@@ -151,11 +145,11 @@ const Register = () => {
             </div>
 
             {/* Right Side - Branding */}
-            <div className="w-full md:w-1/2 bg-black text-white flex flex-col justify-center items-center p-10">
-                <h1 className="text-4xl font-bold mb-4 flex items-center gap-2 text-red-500">
+            <div className="w-full md:w-1/2 flex-1 bg-black text-white flex flex-col justify-center items-center p-8 md:p-10">
+                <h1 className="text-3xl md:text-4xl font-bold mb-4 flex items-center gap-2 text-red-500">
                     MindWeave
                 </h1>
-                <p className="text-lg text-gray-400 text-center max-w-md">
+                <p className="text-base md:text-lg text-gray-400 text-center max-w-md">
                     Begin your journey with MindWeave. Share your thoughts, connect ideas, and start weaving the future today.
                 </p>
             </div>
