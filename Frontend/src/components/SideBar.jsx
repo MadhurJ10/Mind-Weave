@@ -5,7 +5,7 @@ import { addData, setLatest } from "../features/conceptMapSlice";
 import { BsLayoutSidebar } from "react-icons/bs";
 
 const SideBar = ({ toggleButton, IsOpen, setIsDepth, setIsMapBarOpen }) => {
-  const [history, setHistory] = useState([]);
+  const [ history, setHistory ] = useState([]);
   const dispatch = useDispatch();
   const conceptMapData = useSelector((state) => state.conceptMap.data);
   const latestData = useSelector((state) => state.conceptMap.latest);
@@ -41,7 +41,7 @@ const SideBar = ({ toggleButton, IsOpen, setIsDepth, setIsMapBarOpen }) => {
 
   return (
     <div
-      className="sidebar w-[11rem] h-screen 
+      className="sidebar w-[11rem]
                  bg-gradient-to-b from-black via-[#111] to-[#1a1a1a] 
                  flex flex-col text-gray-200 border-r border-red-600/30"
     >
@@ -86,16 +86,6 @@ const SideBar = ({ toggleButton, IsOpen, setIsDepth, setIsMapBarOpen }) => {
             No chats found
           </p>
         )}
-      </div>
-
-      {/* Footer */}
-      <div className="border-t border-zinc-800">
-        <h1
-          className="text-center py-2 text-sm bg-red-600 hover:bg-red-700 
-                     text-white cursor-pointer transition"
-        >
-          Login
-        </h1>
       </div>
     </div>
   );

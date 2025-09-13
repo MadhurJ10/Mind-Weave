@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-// import imggg from '../assets/imggg.png';
+import imggg from '../assets/imggg.png';
 // import ClientsSection from '../components/ClientsSection';
 // import Footer from '../components/Footer';
 // import HeroSection from './HeroSection';
@@ -11,53 +11,12 @@ import { Link } from 'react-router-dom';
 // import Card from '../components/Card';
 
 
-const imggg = React.lazy(() => import('../assets/imggg.png'));
 const ClientsSection = React.lazy(() => import('../components/ClientsSection'));
 const Footer = React.lazy(() => import('../components/Footer'));
-const HeroSection  = React.lazy(() => import('./HeroSection'));
+const HeroSection = React.lazy(() => import('./HeroSection'));
 const HowItWorks = React.lazy(() => import('../components/HowItWorks'));
 const ReviewsGrid = React.lazy(() => import('../components/ReviewsGrid'));
 const Card = React.lazy(() => import('../components/Card'));
-
-
-const review = {
-  "Mindweave_Reviews": [
-    {
-      "name": "Rebecca Down",
-      "date": "2022-03-17",
-      "review": "MindWeave transformed the way I organize my thoughts. It turned my messy ideas into clear, structured maps that made complex projects easier to manage. I now approach every challenge with confidence and clarity, saving hours each week.",
-      "img": { "src": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e", "alt": "Smiling young woman with long hair" }
-    },
-    {
-      "name": "Francesca Cox",
-      "date": "2021-12-26",
-      "review": "Using MindWeave feels like having a personal assistant for my brain. The AI-driven maps made brainstorming faster, smoother, and surprisingly fun. It gave me focus when I was overwhelmed, and now it’s an essential tool for my studies.",
-      "img": { "src": "https://images.unsplash.com/photo-1502685104226-ee32379fefbe", "alt": "Confident woman in glasses smiling" }
-    },
-    {
-      "name": "Sarah Robinson",
-      "date": "2021-11-30",
-      "review": "MindWeave helped me break down complex topics into simple, visual pathways. It’s like zooming out on my thoughts and instantly seeing the bigger picture. I’ve used it for research, projects, and even daily planning—it never disappoints.",
-      "img": { "src": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d", "alt": "Smiling woman with curly hair" }
-    },
-    {
-      "name": "Helen Brown",
-      "date": "2021-09-02",
-      "review": "I used MindWeave to prepare for a major presentation, and it completely changed my process. Instead of scattered notes, I had a beautifully structured flow of ideas. My audience said it was the clearest talk I’d ever given.",
-      "img": { "src": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1", "alt": "Professional woman smiling in office" }
-    },
-    {
-      "name": "Anonymous",
-      "review": "As a developer, MindWeave has become my go-to tool for planning projects. The ability to visually connect APIs, features, and workflows makes collaboration so much easier. My team now uses it regularly to align ideas before coding begins.",
-      "img": { "src": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61", "alt": "Male software developer working at desk" }
-    },
-    {
-      "name": "Anonymous",
-      "review": "MindWeave is more than just a concept-mapping tool—it’s a creativity booster. I’ve used it for hackathon planning, project design, and even personal goals. Every time, it helps me cut through chaos and build something meaningful with clarity.",
-      "img": { "src": "https://images.unsplash.com/photo-1544723795-3fb6469f5b39", "alt": "Young man smiling outdoors" }
-    }
-  ]
-};
 
 const Home = () => {
   return (
@@ -79,7 +38,7 @@ const Home = () => {
               makes thinking, connecting, and learning beautifully simple.
             </p>
             <Link
-              className="self-center bg-[#FF4533] px-6 py-3 font-medium border border-[#9B170B] border-dashed rounded-lg hover:bg-[#FF2410] transition-colors duration-300"
+              className="self-center bg-[#FF4533] hover:bg-[#FF2410] transition-colors duration-300 px-6 py-3 font-medium border border-[#9B170B] border-dashed rounded-lg "
               to="/chat"
             >
               Start Mapping
@@ -130,7 +89,7 @@ const Home = () => {
             There's a reason people <br /> are <span className='font-instrumentitalic'>raving</span> about us.
           </h1>
         </div>
-        <ReviewsGrid reviews={review.Mindweave_Reviews} />
+        <ReviewsGrid />
       </div>
 
       {/* Glowing Orb + Footer */}

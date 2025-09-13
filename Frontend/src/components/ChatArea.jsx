@@ -72,12 +72,12 @@ const ChatArea = ({ setIsMapBarOpen, setIsDepth }) => {
                             </div>
                         ))
                     ) : (
-                        <p className="text-gray-500 italic">Chat messages appear here...</p>
+                        <p className="text-gray-500 italic"></p>
                     )}
                 </div>
 
                 {/* Ask AI button + dropdown */}
-                <div className="p-3 flex flex-col items-center relative">
+                <div className="p-3 flex  flex-col items-center relative">
                     <button
                         onClick={() => setShowDropdown(!showDropdown)}
                         className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg shadow-md transition"

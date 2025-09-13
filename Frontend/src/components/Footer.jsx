@@ -88,11 +88,11 @@ const Footer = ({ className }) => {
               <span className="sr-only">Twitter</span>
               <i className="ri-twitter-x-line text-xl"></i>
             </a>
-            <a href="#" className="text-gray-500 hover:text-gray-400">
+            <a href="https://github.com/MadhurJ10/Mind-Weave" className="text-gray-500 hover:text-gray-400">
               <span className="sr-only">GitHub</span>
               <i className="ri-github-fill text-xl"></i>
             </a>
-            <a href="#" className="text-gray-500 hover:text-gray-400">
+            <a href="https://www.linkedin.com/in/madhur-bhawsar-aa71a8290/" className="text-gray-500 hover:text-gray-400">
               <span className="sr-only">LinkedIn</span>
               <i className="ri-linkedin-box-fill text-xl"></i>
             </a>
