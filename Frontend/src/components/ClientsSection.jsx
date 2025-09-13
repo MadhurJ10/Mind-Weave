@@ -10,7 +10,7 @@ const ClientsSection = () => {
   ];
 
   return (
-    <div className="flex items-center  bg-black text-white p-4 rounded-xl">
+    <div className="flex items-center mt-[2rem]  bg-black text-white p-4 rounded-xl">
       {/* Profile Images */}
       <div className="flex -space-x-3">
   {clients.map((img, i) => (

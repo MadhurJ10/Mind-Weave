@@ -4,7 +4,7 @@ import { userContext } from '../context/UserProvider'
 
 
 const NavBar = () => {
-  const {isUserValid} = useContext(userContext);
+  const { isUserValid } = useContext(userContext);
   return (
     <div className="flex fixed left-1/2 transform -translate-x-1/2 justify-between items-center gap-6 w-[20rem] sm:w-[36rem] bg-black/80 text-white px-6 py-3 top-6 z-50 rounded-xl border border-white/10 shadow-lg">
 
@@ -26,16 +26,16 @@ const NavBar = () => {
 
       {/* Menu */}
       <div className="flex gap-3 text-sm font-medium">
-        {!isUserValid && <Link  to="login" className="flex justify-center items-center px-5 rounded-lg hover:bg-[#1A1A1A] transition-colors duration-300">Login</Link>}
+        {!isUserValid && <Link to="login" className="flex justify-center items-center px-5 rounded-lg hover:bg-[#1A1A1A] transition-colors duration-300">Login</Link>}
         {/* <button className="hover:text-gray-300">Blog</button>
         <button className="hover:text-gray-300">Services</button>
         <button className="hover:text-gray-300">Process</button>
         <button className="hover:text-gray-300">Pages</button> */}
-      <Link to='/chat' className="bg-[#FF4533] px-4 py-2 rounded-lg font-semibold text-sm hover:bg-[#FF2410] transition-colors duration-300 ">
-        Start Mapping
-      </Link>
-    </div>
+        <Link to='/chat' className="bg-[#FF4533] px-4 py-2 rounded-lg font-semibold text-sm hover:bg-[#FF2410] transition-colors duration-300 ">
+          Start Mapping
+        </Link>
       </div>
+    </div>
 
   )
 }
