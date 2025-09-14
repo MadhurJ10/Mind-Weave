@@ -1,65 +1,74 @@
 import React, { useContext, useEffect } from 'react';
 import { Routes, Route } from "react-router-dom";
-import { userContext } from './context/UserProvider'
+import Lenis from '@studio-freight/lenis';
+
+import { userContext } from './context/UserProvider';
 import { fetchUserDetails } from './services/AuthService';
 
 import ProtectedRoute from './pages/ProtectedRoute';
-// import Home from './pages/Home';
 import NavBar from './components/NavBar';
-
 
 const Home = React.lazy(() => import('./pages/Home'));
 const Login = React.lazy(() => import('./pages/Login'));
 const Chat = React.lazy(() => import('./pages/Chat'));
 const Register = React.lazy(() => import('./pages/Register'));
 
-
-
 const App = () => {
-  const { isUserValid, setIsUserValid } = useContext(userContext);
+  const { setIsUserValid } = useContext(userContext);
 
+  // ✅ Lenis Smooth Scroll
+  useEffect(() => {
+    const lenis = new Lenis({
+      smooth: true,
+      lerp: 0.05, // lower = slower/inertia
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    return () => lenis.destroy(); // cleanup
+  }, []);
+
+  // ✅ Fetch user details
   useEffect(() => {
     const fetchUser = async () => {
-      // setIsLoading(true);
       try {
         const user = await fetchUserDetails();
         console.log("Fetched User:", user);
-        if (!user) {
-          setIsUserValid(false);
-        } else {
-          // setUserDetails(user);
-          setIsUserValid(true);
-          // console.log(user.vaultPassword)
-        }
+        setIsUserValid(!!user);
       } catch (error) {
-        // console.error('Error fetching user details:', error);
         setIsUserValid(false);
-      } finally {
-        // setIsLoading(false);
       }
     };
 
     fetchUser();
-  }, [ setIsUserValid ]);
-  return (
-    <div className="flex flex-col ">
+  }, [setIsUserValid]);
 
+  return (
+    <div className="flex flex-col">
       <Routes>
-        <Route path="/" element={
-          <>
-            <NavBar />
-            <Home />
-            {/* <HowItWorks /> */}
-          </>
-        } />
-        <Route path="/chat" element={
-          <ProtectedRoute>
-            <Chat/>
-          </ProtectedRoute>
-        } />
+        <Route
+          path="/"
+          element={
+            <>
+              <NavBar />
+              <Home />
+            </>
+          }
+        />
+        <Route
+          path="/chat"
+          element={
+            <ProtectedRoute>
+              <Chat />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
       </Routes>
     </div>
   );

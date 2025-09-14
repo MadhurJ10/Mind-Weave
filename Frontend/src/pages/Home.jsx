@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { motion } from "framer-motion";
 
 import imggg from '../assets/imggg.png';
 // import ClientsSection from '../components/ClientsSection';
@@ -29,9 +29,13 @@ const Home = () => {
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-10">
           <ClientsSection />
           <div className="flex flex-col gap-[1.5rem] mt-8">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-dm text-white leading-snug">
+            <motion.h1
+              initial={{ opacity: 0}}
+              animate={{ opacity: 1 }}
+              transition={{ duration:2,  ease: "easeIn" }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-dm text-white leading-snug">
               Visualize, Connect, <br /> and <span className="font-instrumentitalic">Expand</span> Your Mind.
-            </h1>
+            </motion.h1>
 
             <p className="text-[#8B8B8B] font-bold">
               Turn your messy brainstorms into organized, meaningful maps - MindWeave <br />

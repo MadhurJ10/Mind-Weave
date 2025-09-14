@@ -1,12 +1,18 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { userContext } from '../context/UserProvider'
+import { easeInOut, motion } from 'framer-motion'
+
 
 
 const NavBar = () => {
   const { isUserValid } = useContext(userContext);
   return (
-    <div className="flex fixed left-1/2 transform -translate-x-1/2 justify-between items-center gap-6 w-[20rem] sm:w-[36rem] bg-black/80 text-white px-6 py-3 top-6 z-50 rounded-xl border border-white/10 shadow-lg">
+    <motion.div 
+    initial={{opacity:1 , y:-60}}
+    animate={{opacity:1 , y:0}}
+    transition={{duration:0.5 , ease:"easeOut"}}
+    className="flex fixed left-1/2 transform -translate-x-1/2 justify-between items-center gap-6 w-[20rem] sm:w-[36rem] bg-black/80 text-white px-6 py-3 top-6 z-50 rounded-xl border border-white/10 shadow-lg">
 
       {/* Logo */}
       <div className="flex items-center gap-2">
@@ -35,7 +41,7 @@ const NavBar = () => {
           Start Mapping
         </Link>
       </div>
-    </div>
+    </motion.div>
 
   )
 }
