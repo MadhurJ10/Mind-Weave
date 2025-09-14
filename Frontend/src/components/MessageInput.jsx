@@ -26,7 +26,7 @@ const MessageInput = ({ setIsMapBarOpen, setIsDepth }) => {
             const responseIntro = await ApiClient.post('map/intro', {
                 content: data.text
             })
-            console.log(responseIntro.data.text)
+            // console.log(responseIntro.data.text)
             setMessages((prev) => [ ...prev, { sender: "bot", text: responseIntro.data.text } ]);
 
             const response = await ApiClient.post(

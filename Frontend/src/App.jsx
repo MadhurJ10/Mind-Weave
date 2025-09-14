@@ -23,7 +23,7 @@ const App = () => {
     const fetchUser = async () => {
       try {
         const user = await fetchUserDetails();
-        console.log("Fetched User:", user);
+        // console.log("Fetched User:", user);
         setIsUserValid(!!user);
       } catch (error) {
         setIsUserValid(false);

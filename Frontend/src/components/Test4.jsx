@@ -85,7 +85,7 @@ function layoutLR(nodes, edges) {
 
 export default function Test4Redux({IsDepth}) {
   const conceptMapData = useSelector((state) => state.conceptMap.latest);
-  console.log("Redux Data:", conceptMapData);
+  // console.log("Redux Data:", conceptMapData);
 
   // ✅ Latest entry
   const latestEntry = conceptMapData

@@ -19,7 +19,7 @@ const MapSavebutton = ({ data, depth }) => {
                     depth: fix
                 }
             )
-            console.log('send')
+            // console.log('send')
         } catch (error) {
             console.log(error)
         }

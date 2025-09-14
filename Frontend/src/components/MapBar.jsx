@@ -8,7 +8,7 @@ import {ChatContext} from '../context/ChatProvider'
 
 const MapBar = ({ onClose, setIsDepth, IsDepth }) => {
   const {messages} = useContext(ChatContext);
-  console.log(messages)
+  // console.log(messages)
   return (
     <div className="w-[40rem] h-full bg-gradient-to-b from-black via-[#111] to-[#1a1a1a] 
                     border-l border-red-600/40 shadow-xl flex flex-col text-gray-200">
