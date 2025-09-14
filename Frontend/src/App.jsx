@@ -17,20 +17,6 @@ const App = () => {
   const { setIsUserValid } = useContext(userContext);
 
   // ✅ Lenis Smooth Scroll
-  useEffect(() => {
-    const lenis = new Lenis({
-      smooth: true,
-      lerp: 0.05, // lower = slower/inertia
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    return () => lenis.destroy(); // cleanup
-  }, []);
 
   // ✅ Fetch user details
   useEffect(() => {

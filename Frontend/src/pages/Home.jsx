@@ -3,13 +3,6 @@ import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 
 import imggg from '../assets/imggg.png';
-// import ClientsSection from '../components/ClientsSection';
-// import Footer from '../components/Footer';
-// import HeroSection from './HeroSection';
-// import HowItWorks from '../components/HowItWorks';
-// import ReviewsGrid from '../components/ReviewsGrid';
-// import Card from '../components/Card';
-
 
 const ClientsSection = React.lazy(() => import('../components/ClientsSection'));
 const Footer = React.lazy(() => import('../components/Footer'));
@@ -37,10 +30,14 @@ const Home = () => {
               Visualize, Connect, <br /> and <span className="font-instrumentitalic">Expand</span> Your Mind.
             </motion.h1>
 
-            <p className="text-[#8B8B8B] font-bold">
+            <motion.p 
+            initial={{opacity:0}}
+            animate={{opacity:1}}
+            transition={{duration:2.5 ,ease:"easeIn"}}
+            className="text-[#8B8B8B] font-bold">
               Turn your messy brainstorms into organized, meaningful maps - MindWeave <br />
               makes thinking, connecting, and learning beautifully simple.
-            </p>
+            </motion.p>
             <Link
               className="self-center bg-[#FF4533] hover:bg-[#FF2410] transition-colors duration-300 px-6 py-3 font-medium border border-[#9B170B] border-dashed rounded-lg "
               to="/chat"

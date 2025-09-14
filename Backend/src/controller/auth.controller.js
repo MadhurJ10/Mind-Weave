@@ -6,7 +6,7 @@ import prisma from '../lib/prisma.js';
 const JWT_SECRET = process.env.JWT_SECRET;
 
 // Utility: Generate token
-const generateToken = (id) => jwt.sign({ id }, JWT_SECRET, { expiresIn: '1d' });
+const generateToken = (id) => jwt.sign({ id }, JWT_SECRET);
 
 // Utility: Remove password before sending response
 const sanitizeUser = (user) => {
