@@ -6,7 +6,6 @@ import {
   applyNodeChanges,
   applyEdgeChanges,
   MarkerType,
-  Panel
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import dagre from "dagre";
@@ -14,8 +13,6 @@ import { useSelector } from "react-redux";
 import ExportMenu from "../features/ExportMenu";
 import ExportExcalidraw from "../features/ExportExcalidraw";
 import MapSavebutton from "./MapSavebutton";
-
-
 
 const nodeWidth = 180;
 const nodeHeight = 52;
@@ -40,7 +37,7 @@ const rawEdges = [
   { id: "e4-10", source: "4", target: "10" },
 ];
 
-// Dagre layout helper (LEFT ➜ RIGHT)
+// Layout helper (Left ➜ Right)
 function layoutLR(nodes, edges) {
   const g = new dagre.graphlib.Graph();
   g.setGraph({
@@ -72,30 +69,25 @@ function layoutLR(nodes, edges) {
   });
 }
 
-export default function Test3({IsDepth}) {
+export default function Test3({ IsDepth }) {
   const conceptMapData = useSelector((state) => state.conceptMap.data);
-  const latestData = useSelector((state) => state.conceptMap.latest);
-  // console.log("Redux Data:", conceptMapData);
-  
-
-  // ✅ Get latest entry safely
   const latestEntry =
-    conceptMapData.length > 0 ? conceptMapData[ conceptMapData.length - 1 ] : null;
+    conceptMapData.length > 0
+      ? conceptMapData[conceptMapData.length - 1]
+      : null;
 
-  // ✅ Build nodes only if latestEntry exists
+  // Build nodes only if data exists
   const rawNodes = latestEntry
-    ? Object.entries(latestEntry).map(([ id, { label, background } ]) => ({
-      id,
-      data: { label },
-      style: { ...baseStyle, background, color: "#111" },
-
-    }))
+    ? Object.entries(latestEntry).map(([id, { label, background }]) => ({
+        id,
+        data: { label },
+        style: { ...baseStyle, background, color: "#111" },
+      }))
     : [];
 
   const { initialNodes, initialEdges } = useMemo(() => {
-    if (!latestEntry) {
-      return { initialNodes: [], initialEdges: [] };
-    }
+    if (!latestEntry) return { initialNodes: [], initialEdges: [] };
+
     return {
       initialNodes: layoutLR(rawNodes, rawEdges),
       initialEdges: rawEdges.map((e) => ({
@@ -105,15 +97,15 @@ export default function Test3({IsDepth}) {
         markerEnd: { type: MarkerType.ArrowClosed },
       })),
     };
-  }, [ conceptMapData ]);
+  }, [conceptMapData]);
 
-  const [ nodes, setNodes ] = useState(initialNodes);
-  const [ edges, setEdges ] = useState(initialEdges);
+  const [nodes, setNodes] = useState(initialNodes);
+  const [edges, setEdges] = useState(initialEdges);
 
   useEffect(() => {
     setNodes(initialNodes);
     setEdges(initialEdges);
-  }, [ initialNodes, initialEdges ]);
+  }, [initialNodes, initialEdges]);
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -124,14 +116,14 @@ export default function Test3({IsDepth}) {
     []
   );
 
-  // 🚨 Prevent rendering ReactFlow with empty data
   if (!latestEntry) {
     return <div style={{ padding: 20 }}>⚠️ No data available</div>;
   }
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
-      <ReactFlow id="reactflow-wrapper"
+    <div style={{ width: "100%", height: "100%", position: "relative" }}>
+      <ReactFlow
+        id="reactflow-wrapper"
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
@@ -141,12 +133,24 @@ export default function Test3({IsDepth}) {
         <Controls position="bottom-right" />
         <Background />
       </ReactFlow>
-      <Panel position="bottom-center">
+
+      {/* Action buttons row – fixed at original MapSavebutton height */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "rem", // adjust this to match the old button spot
+          left: "40%",
+          transform: "translateX(-50%)",
+          display: "flex",
+          gap: "1rem",
+          alignItems: "center",
+          zIndex: 10,
+        }}
+      >
         <ExportExcalidraw nodes={nodes} edges={edges} />
-      </Panel>
-      <ExportMenu />
-      <MapSavebutton data={latestEntry} depth={IsDepth}/>
-      {/* <button>hehe</button> */}
+        <ExportMenu />
+        <MapSavebutton data={latestEntry} depth={IsDepth} />
+      </div>
     </div>
   );
 }
